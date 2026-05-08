@@ -125,7 +125,7 @@ section { padding: 100px 24px; }
 #hero {
   min-height: 100vh;
   background: linear-gradient(to bottom, rgba(44,44,44,0.45) 0%, rgba(44,44,44,0.15) 55%, rgba(44,44,44,0.6) 100%),
-    url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600&q=85&auto=format&fit=crop') center 30% / cover no-repeat;
+    url('roba1.png') center 30% / cover no-repeat;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center; padding: 120px 24px 80px; position: relative;
 }
@@ -310,6 +310,15 @@ section { padding: 100px 24px; }
   .upload-bar { padding: 24px 20px 0; }
   .proj-grid-wrap { padding: 24px 20px 60px; }
   .modal-box { padding: 32px 22px; }
+}
+@media only screen and (max-width: 768px) {
+  #hero {
+    /* ცვლის პოზიციას: 'right center' ნიშნავს, რომ სურათის მარჯვენა ნაწილი, 
+       სადაც ოსტატია, ყოველთვის გამოჩნდება ეკრანზე.
+    */
+    background-position: right center !important;
+    background-size: cover; /* დარწმუნდით, რომ მაინც 'cover'-ია */
+  }
 }
 </style>
 </head>
