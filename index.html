@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>რობაქიძეების ავეჯის სახლი</title>
+<title>რობაქიძეების ავეჯი</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -11,99 +11,37 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Jost', sans-serif; background: #F8F6F2; color: #2C2C2C; overflow-x: hidden; }
 img { display: block; max-width: 100%; }
 button { font-family: 'Jost', sans-serif; cursor: pointer; }
-
 :root {
-  --wood:     #A0522D;
-  --wood-lt:  #C4855A;
-  --charcoal: #2C2C2C;
-  --stone:    #8A8A8A;
-  --cream:    #F8F6F2;
-  --linen:    #EFEDE8;
+  --wood: #A0522D; --wood-lt: #C4855A; --charcoal: #2C2C2C;
+  --stone: #8A8A8A; --cream: #F8F6F2; --linen: #EFEDE8;
 }
-
-/* ── PAGE SWITCHING ── */
 .page { display: none !important; }
 .page.active { display: block !important; }
 
 /* ── NAV ── */
-#navbar {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  transition: background 0.35s, box-shadow 0.35s;
-  border-bottom: 1px solid transparent;
-}
-#navbar.scrolled {
-  background: rgba(248,246,242,0.95);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 rgba(160,82,45,0.1);
-  border-color: rgba(160,82,45,0.1);
-}
-#navbar.solid {
-  background: rgba(248,246,242,0.97);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 0 rgba(160,82,45,0.1);
-  border-color: rgba(160,82,45,0.1);
-}
-.nav-inner {
-  max-width: 1100px; margin: 0 auto; padding: 20px 32px;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.nav-logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.45rem; font-weight: 500; color: white;
-  letter-spacing: 0.02em; transition: color 0.3s;
-  background: none; border: none; cursor: pointer;
-}
-#navbar.scrolled .nav-logo,
-#navbar.solid .nav-logo { color: var(--charcoal); }
-
+#navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; transition: background 0.35s, box-shadow 0.35s; border-bottom: 1px solid transparent; }
+#navbar.scrolled { background: rgba(248,246,242,0.95); backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(160,82,45,0.1); border-color: rgba(160,82,45,0.1); }
+#navbar.solid { background: rgba(248,246,242,0.97); backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(160,82,45,0.1); border-color: rgba(160,82,45,0.1); }
+.nav-inner { max-width: 1100px; margin: 0 auto; padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 500; color: white; letter-spacing: 0.02em; transition: color 0.3s; background: none; border: none; cursor: pointer; }
+#navbar.scrolled .nav-logo, #navbar.solid .nav-logo { color: var(--charcoal); }
 .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-.nav-links a, .nav-links button {
-  font-size: 0.68rem; font-weight: 300; letter-spacing: 0.16em;
-  text-transform: uppercase; text-decoration: none;
-  color: rgba(255,255,255,0.78); transition: color 0.25s;
-  background: none; border: none; padding: 0;
-}
-#navbar.scrolled .nav-links a,
-#navbar.scrolled .nav-links button,
-#navbar.solid .nav-links a,
-#navbar.solid .nav-links button { color: var(--stone); }
+.nav-links a, .nav-links button { font-size: 0.68rem; font-weight: 300; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; color: rgba(255,255,255,0.78); transition: color 0.25s; background: none; border: none; padding: 0; }
+#navbar.scrolled .nav-links a, #navbar.scrolled .nav-links button, #navbar.solid .nav-links a, #navbar.solid .nav-links button { color: var(--stone); }
 .nav-links a:hover, .nav-links button:hover { color: var(--wood-lt) !important; }
-
-.nav-pill {
-  padding: 9px 22px !important;
-  border: 1.5px solid rgba(255,255,255,0.55) !important;
-  transition: background 0.25s, color 0.25s, border-color 0.25s !important;
-  border-radius: 0 !important;
-}
+.nav-pill { padding: 9px 22px !important; border: 1.5px solid rgba(255,255,255,0.55) !important; transition: background 0.25s, color 0.25s, border-color 0.25s !important; }
 .nav-pill:hover { background: white !important; color: var(--charcoal) !important; border-color: white !important; }
-#navbar.scrolled .nav-pill,
-#navbar.solid .nav-pill { border-color: var(--wood) !important; color: var(--wood) !important; }
-#navbar.scrolled .nav-pill:hover,
-#navbar.solid .nav-pill:hover { background: var(--wood) !important; color: white !important; }
-
+#navbar.scrolled .nav-pill, #navbar.solid .nav-pill { border-color: var(--wood) !important; color: var(--wood) !important; }
+#navbar.scrolled .nav-pill:hover, #navbar.solid .nav-pill:hover { background: var(--wood) !important; color: white !important; }
 .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: white; transition: background 0.35s, transform 0.3s, opacity 0.3s; }
-#navbar.scrolled .hamburger span,
-#navbar.solid .hamburger span { background: var(--charcoal); }
+#navbar.scrolled .hamburger span, #navbar.solid .hamburger span { background: var(--charcoal); }
 .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-#mobile-nav {
-  display: none; flex-direction: column;
-  background: rgba(248,246,242,0.98);
-  border-top: 1px solid rgba(160,82,45,0.12);
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
-}
+#mobile-nav { display: none; flex-direction: column; background: rgba(248,246,242,0.98); border-top: 1px solid rgba(160,82,45,0.12); max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s; }
 #mobile-nav.open { max-height: 360px; padding: 16px 32px 28px; }
-#mobile-nav a, #mobile-nav button {
-  font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
-  text-decoration: none; color: var(--charcoal); padding: 13px 0;
-  border-bottom: 1px solid rgba(160,82,45,0.1); font-weight: 300;
-  background: none; border-left: none; border-right: none; border-top: none;
-  text-align: left; display: block; width: 100%;
-}
+#mobile-nav a, #mobile-nav button { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--charcoal); padding: 13px 0; border-bottom: 1px solid rgba(160,82,45,0.1); font-weight: 300; background: none; border-left: none; border-right: none; border-top: none; text-align: left; display: block; width: 100%; }
 #mobile-nav a:last-child, #mobile-nav button:last-child { border-bottom: none; }
 
 /* ── SHARED ── */
@@ -119,16 +57,8 @@ section { padding: 100px 24px; }
 .btn-ghost { background: transparent; color: white; border-color: rgba(255,255,255,0.7); }
 .btn-ghost:hover { background: white; color: var(--charcoal); border-color: white; }
 
-/* ═══════════════════════════
-   HOME PAGE
-═══════════════════════════ */
-#hero {
-  min-height: 100vh;
-  background: linear-gradient(to bottom, rgba(44,44,44,0.45) 0%, rgba(44,44,44,0.15) 55%, rgba(44,44,44,0.6) 100%),
-    url('roba1.png') center 30% / cover no-repeat;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-align: center; padding: 120px 24px 80px; position: relative;
-}
+/* ── HERO ── */
+#hero { min-height: 100vh; background: linear-gradient(to bottom, rgba(44,44,44,0.45) 0%, rgba(44,44,44,0.15) 55%, rgba(44,44,44,0.6) 100%), url('roba1.png') center 30% / cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; }
 .hero-tag { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 24px; animation: fadeUp 0.8s ease both; }
 .hero-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 6.8rem); font-weight: 300; color: white; line-height: 1.04; letter-spacing: -0.01em; margin-bottom: 28px; animation: fadeUp 0.9s 0.1s ease both; }
 .hero-h1 em { font-style: italic; }
@@ -137,6 +67,7 @@ section { padding: 100px 24px; }
 .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.45); }
 .scroll-hint svg { animation: bounce 2.2s infinite; }
 
+/* ── HOME GALLERY ── */
 #work { background: var(--cream); }
 .gallery-header { margin-bottom: 56px; }
 .masonry { columns: 3; column-gap: 14px; }
@@ -149,6 +80,7 @@ section { padding: 100px 24px; }
 .masonry-item:hover .masonry-label { transform: translateY(0); opacity: 1; }
 .view-all-wrap { text-align: center; margin-top: 48px; }
 
+/* ── PROCESS ── */
 #process { background: var(--linen); }
 .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 56px; }
 .step-card { background: var(--cream); padding: 44px 36px; transition: transform 0.3s, box-shadow 0.3s; }
@@ -158,6 +90,7 @@ section { padding: 100px 24px; }
 .step-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--charcoal); margin-bottom: 14px; }
 .step-desc { font-size: 0.88rem; font-weight: 300; line-height: 1.8; color: var(--stone); }
 
+/* ── ABOUT ── */
 #about { background: white; }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .about-text p { font-size: 0.92rem; font-weight: 300; line-height: 1.85; color: var(--stone); margin-bottom: 20px; }
@@ -166,6 +99,7 @@ section { padding: 100px 24px; }
 .about-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(44,44,44,0.5), transparent 55%); }
 .about-img-caption { position: absolute; bottom: 28px; left: 28px; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; font-style: italic; color: white; }
 
+/* ── CONTACT ── */
 #contact { background: var(--charcoal); padding-bottom: 0; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding-bottom: 80px; }
 .contact-h2 { color: white; } .contact-h2 em { font-style: italic; }
@@ -192,12 +126,10 @@ section { padding: 100px 24px; }
 .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: rgba(255,255,255,0.4); }
 .footer-copy { font-size: 0.7rem; font-weight: 300; letter-spacing: 0.06em; color: rgba(255,255,255,0.25); }
 
-/* ═══════════════════════════
+/* ══════════════════════════════════
    PROJECTS PAGE
-═══════════════════════════ */
-.proj-hero {
-  padding: 160px 32px 72px; background: var(--charcoal); text-align: center;
-}
+══════════════════════════════════ */
+.proj-hero { padding: 160px 32px 72px; background: var(--charcoal); text-align: center; }
 .proj-hero .section-tag { color: var(--wood-lt); margin-bottom: 14px; }
 .proj-hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem,7vw,5.5rem); font-weight: 300; color: white; line-height: 1.06; margin-bottom: 16px; }
 .proj-hero h1 em { font-style: italic; }
@@ -206,7 +138,7 @@ section { padding: 100px 24px; }
 .back-btn:hover { color: white; }
 .back-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 
-/* Filter bar */
+/* Filter */
 .filter-bar { background: white; border-bottom: 1px solid rgba(44,44,44,0.08); position: sticky; top: 63px; z-index: 50; }
 .filter-inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; overflow-x: auto; scrollbar-width: none; }
 .filter-inner::-webkit-scrollbar { display: none; }
@@ -214,29 +146,26 @@ section { padding: 100px 24px; }
 .filter-btn:hover { color: var(--charcoal); }
 .filter-btn.active { color: var(--wood); border-bottom-color: var(--wood); }
 
-/* Upload bar */
-.upload-bar { max-width: 1100px; margin: 0 auto; padding: 32px 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-.upload-zone { display: flex; align-items: center; gap: 12px; padding: 14px 24px; border: 1.5px dashed rgba(160,82,45,0.35); background: rgba(160,82,45,0.04); cursor: pointer; transition: border-color 0.25s, background 0.25s; flex: 1; max-width: 440px; }
-.upload-zone:hover { border-color: var(--wood); background: rgba(160,82,45,0.08); }
-.upload-zone svg { color: var(--wood); flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.5; }
-.upload-zone span { font-size: 0.8rem; font-weight: 300; color: var(--stone); }
-.upload-zone strong { color: var(--wood); font-weight: 500; }
-#file-input { display: none; }
+/* Add project bar */
+.add-bar { max-width: 1100px; margin: 0 auto; padding: 32px 32px 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.add-btn-main { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--wood); color: white; border: none; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 400; transition: background 0.25s; }
+.add-btn-main:hover { background: var(--wood-lt); }
+.add-btn-main svg { stroke: currentColor; fill: none; stroke-width: 1.8; }
 .proj-count { font-size: 0.75rem; font-weight: 300; color: var(--stone); letter-spacing: 0.06em; }
 
-/* Projects grid */
+/* Grid */
 .proj-grid-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 32px 100px; }
 .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
 .proj-card { background: white; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; position: relative; }
 .proj-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(44,44,44,0.12); }
-.proj-card-img-wrap { overflow: hidden; aspect-ratio: 4/3; }
+.proj-card-img-wrap { overflow: hidden; aspect-ratio: 4/3; background: var(--linen); display: flex; align-items: center; justify-content: center; }
 .proj-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94); display: block; }
 .proj-card:hover img { transform: scale(1.07); }
 .proj-card-body { padding: 18px 20px 22px; }
 .proj-card-cat { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wood); margin-bottom: 6px; display: block; }
 .proj-card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: var(--charcoal); margin-bottom: 6px; line-height: 1.2; }
 .proj-card-desc { font-size: 0.8rem; font-weight: 300; color: var(--stone); line-height: 1.6; }
-.proj-delete { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: rgba(44,44,44,0.7); border: none; color: white; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s, background 0.25s; }
+.proj-delete { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; background: rgba(44,44,44,0.72); border: none; color: white; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s, background 0.25s; }
 .proj-card:hover .proj-delete { opacity: 1; }
 .proj-delete:hover { background: #c0392b; }
 .proj-delete svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
@@ -246,18 +175,60 @@ section { padding: 100px 24px; }
 .empty-state.show { display: block; }
 .empty-state svg { margin: 0 auto 20px; stroke: rgba(160,82,45,0.25); fill: none; stroke-width: 1; }
 .empty-state h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--charcoal); margin-bottom: 10px; }
-.empty-state p { font-size: 0.88rem; font-weight: 300; color: var(--stone); }
+.empty-state p { font-size: 0.88rem; font-weight: 300; color: var(--stone); margin-bottom: 24px; }
 
-/* ── MODAL ── */
-.modal-bg { position: fixed; inset: 0; background: rgba(44,44,44,0.8); z-index: 500; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(4px); }
+/* ══════════════════════════════════
+   ADD PROJECT MODAL
+══════════════════════════════════ */
+.modal-bg { position: fixed; inset: 0; background: rgba(44,44,44,0.82); z-index: 500; display: none; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(4px); }
 .modal-bg.show { display: flex; }
-.modal-box { background: white; max-width: 500px; width: 100%; padding: 48px; position: relative; animation: fadeUp 0.28s ease both; }
+.modal-box { background: white; max-width: 560px; width: 100%; position: relative; animation: fadeUp 0.28s ease both; max-height: 92vh; overflow-y: auto; }
+.modal-header { padding: 36px 40px 0; }
+.modal-body { padding: 24px 40px 36px; }
 .modal-x { position: absolute; top: 18px; right: 18px; background: none; border: none; color: var(--stone); transition: color 0.2s; }
 .modal-x:hover { color: var(--charcoal); }
 .modal-x svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-.modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.85rem; font-weight: 300; margin-bottom: 28px; }
-.modal-preview { width: 100%; height: 170px; object-fit: cover; display: none; margin-bottom: 24px; border: 1px solid rgba(44,44,44,0.08); }
-.modal-preview.show { display: block; }
+.modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 300; margin-bottom: 4px; }
+.modal-sub { font-size: 0.78rem; font-weight: 300; color: var(--stone); margin-bottom: 0; }
+
+/* Tab switcher inside modal */
+.tab-bar { display: flex; border-bottom: 1px solid rgba(44,44,44,0.1); margin: 24px 0 28px; }
+.tab-btn { flex: 1; padding: 12px 0; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; background: none; border: none; color: var(--stone); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; font-family: 'Jost', sans-serif; }
+.tab-btn.active { color: var(--wood); border-bottom-color: var(--wood); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* URL input panel */
+.url-instructions { background: var(--linen); padding: 16px 18px; margin-bottom: 20px; border-left: 3px solid var(--wood); }
+.url-instructions p { font-size: 0.78rem; font-weight: 300; color: var(--stone); line-height: 1.7; margin-bottom: 6px; }
+.url-instructions p:last-child { margin-bottom: 0; }
+.url-instructions strong { color: var(--charcoal); font-weight: 500; }
+.url-instructions a { color: var(--wood); text-decoration: none; }
+.url-instructions a:hover { text-decoration: underline; }
+
+.url-preview-wrap { position: relative; width: 100%; height: 160px; background: var(--linen); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.url-preview-wrap img { width: 100%; height: 100%; object-fit: cover; display: none; }
+.url-preview-wrap img.show { display: block; }
+.url-preview-placeholder { font-size: 0.78rem; font-weight: 300; color: rgba(44,44,44,0.3); text-align: center; padding: 20px; }
+.url-preview-placeholder svg { margin: 0 auto 10px; stroke: rgba(44,44,44,0.2); fill: none; stroke-width: 1; }
+.url-error { font-size: 0.75rem; color: #c0392b; font-weight: 300; margin-top: 6px; display: none; }
+.url-error.show { display: block; }
+
+/* File upload panel */
+.file-drop { border: 1.5px dashed rgba(160,82,45,0.35); background: rgba(160,82,45,0.03); padding: 32px; text-align: center; cursor: pointer; transition: border-color 0.25s, background 0.25s; margin-bottom: 20px; position: relative; }
+.file-drop:hover, .file-drop.drag { border-color: var(--wood); background: rgba(160,82,45,0.07); }
+.file-drop svg { stroke: var(--wood); fill: none; stroke-width: 1.3; margin: 0 auto 12px; }
+.file-drop p { font-size: 0.82rem; font-weight: 300; color: var(--stone); }
+.file-drop strong { color: var(--wood); font-weight: 500; }
+.file-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.file-preview-wrap { position: relative; width: 100%; height: 160px; background: var(--linen); margin-bottom: 20px; overflow: hidden; display: none; }
+.file-preview-wrap.show { display: block; }
+.file-preview-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.file-preview-note { font-size: 0.72rem; font-weight: 300; color: var(--stone); margin-top: 8px; }
+.file-warn { background: rgba(160,82,45,0.08); border: 1px solid rgba(160,82,45,0.2); padding: 10px 14px; font-size: 0.75rem; font-weight: 300; color: var(--wood); margin-bottom: 16px; display: none; }
+.file-warn.show { display: block; }
+
+/* Shared form fields */
 .mfield { margin-bottom: 22px; }
 .mlabel { font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); display: block; margin-bottom: 8px; }
 .minput, .mselect, .mtextarea { width: 100%; border: none; border-bottom: 1px solid rgba(44,44,44,0.18); padding: 10px 0; font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 300; color: var(--charcoal); outline: none; background: transparent; transition: border-color 0.25s; }
@@ -267,6 +238,12 @@ section { padding: 100px 24px; }
 .modal-actions .btn { flex: 1; text-align: center; }
 .btn-cancel { background: transparent; color: var(--stone); border-color: rgba(44,44,44,0.2); }
 .btn-cancel:hover { background: var(--linen); color: var(--charcoal); }
+
+/* Bulk URL textarea */
+.bulk-note { font-size: 0.75rem; font-weight: 300; color: var(--stone); margin-bottom: 10px; line-height: 1.6; }
+.bulk-textarea { width: 100%; height: 120px; border: 1px solid rgba(44,44,44,0.15); padding: 12px; font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 300; color: var(--charcoal); resize: vertical; outline: none; transition: border-color 0.25s; }
+.bulk-textarea:focus { border-color: var(--wood); }
+.bulk-textarea::placeholder { color: rgba(44,44,44,0.3); }
 
 /* ── LIGHTBOX ── */
 .lb { position: fixed; inset: 0; background: rgba(10,10,10,0.95); z-index: 600; display: none; align-items: center; justify-content: center; padding: 24px; }
@@ -283,33 +260,23 @@ section { padding: 100px 24px; }
 .lb-caption-name { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; color: white; }
 .lb-caption-cat { font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--wood-lt); margin-top: 4px; }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
 @keyframes bounce { 0%,100% { transform:translateY(0); } 50% { transform:translateY(7px); } }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  #mobile-nav { display: flex; }
-  .masonry { columns: 2; }
-  .steps-grid { grid-template-columns: 1fr; gap: 20px; }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-img-wrap { height: 340px; }
+  .nav-links { display: none; } .hamburger { display: flex; } #mobile-nav { display: flex; }
+  .masonry { columns: 2; } .steps-grid { grid-template-columns: 1fr; gap: 20px; }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-img-wrap { height: 340px; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .proj-grid { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width: 560px) {
-  .masonry { columns: 1; }
-  .hero-btns { flex-direction: column; align-items: center; }
-  .nav-inner { padding: 18px 20px; }
-  section { padding: 72px 20px; }
-  .step-card { padding: 32px 24px; }
-  .proj-grid { grid-template-columns: 1fr; }
-  .filter-inner { padding: 0 20px; }
-  .upload-bar { padding: 24px 20px 0; }
+  .masonry { columns: 1; } .hero-btns { flex-direction: column; align-items: center; }
+  .nav-inner { padding: 18px 20px; } section { padding: 72px 20px; }
+  .step-card { padding: 32px 24px; } .proj-grid { grid-template-columns: 1fr; }
+  .filter-inner { padding: 0 20px; } .add-bar { padding: 24px 20px 0; }
   .proj-grid-wrap { padding: 24px 20px 60px; }
-  .modal-box { padding: 32px 22px; }
+  .modal-header { padding: 28px 24px 0; } .modal-body { padding: 20px 24px 28px; }
 }
 @media only screen and (max-width: 768px) {
   #hero {
@@ -324,53 +291,47 @@ section { padding: 100px 24px; }
 </head>
 <body>
 
-<!-- ══════════ NAV ══════════ -->
+<!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
     <button class="nav-logo" onclick="goHome()">რობაქიძეების ავეჯი</button>
     <ul class="nav-links">
-      <li><a href="#work" onclick="goHome()">ნამუშებრები</a></li>
-      <li><a href="#process" onclick="goHome()">როგორ მიდის პროცესი</a></li>
+      <li><a href="#work" onclick="goHome()">ნამუშევრები</a></li>
+      <li><a href="#process" onclick="goHome()">პროცესი</a></li>
       <li><a href="#about" onclick="goHome()">ჩვენს შესახებ</a></li>
       <li><a href="#contact" onclick="goHome()">დაგვიკავშირდით</a></li>
-      <li><button class="nav-pill" onclick="goProjects()">ყველა ნამუშევარი</button></li>
+      <li><button class="nav-pill" onclick="goProjects()">ყველა პროექტი</button></li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
   <div id="mobile-nav">
-    <a href="#work" onclick="goHome();closeMenu()">ნამუშებრები</a>
-    <a href="#process" onclick="goHome();closeMenu()">როგორ მიდის პროცესი</a>
+    <a href="#work" onclick="goHome();closeMenu()">ნამუშევრები</a>
+    <a href="#process" onclick="goHome();closeMenu()">პროცესი</a>
     <a href="#about" onclick="goHome();closeMenu()">ჩვენს შესახებ</a>
     <a href="#contact" onclick="goHome();closeMenu()">დაგვიკავშირდით</a>
-    <button onclick="goProjects();closeMenu()">ყველა ნამუშევარი →</button>
+    <button onclick="goProjects();closeMenu()">ყველა პროექტი →</button>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════
-     HOME PAGE
-══════════════════════════════════════ -->
+<!-- ══════════ HOME PAGE ══════════ -->
 <div id="page-home" class="page active">
-
-  <!-- HERO -->
   <section id="hero">
-    <h1 class="hero-h1">ავეჯის აწყობა<br><em>რომელიც ძლებს სამუდამოდ</em></h1>
-    <p class="hero-sub">სამზარეულოები, მაგიდები, და მისაღები სივრცეები — ყველაფერი მზადდება უმაღლესი ხარისხის მასალისაგან.</p>
+    <p class="hero-tag">ხელნაკეთი &middot; გამძლე &middot; უსასრულო</p>
+    <h1 class="hero-h1">ავეჯი აწყობილია<br><em>რომ გაძლოს სამუდამოდ</em></h1>
+    <p class="hero-sub">სამზარეულოები, მაგიდები, და საყოფაცხოვრებო ავეჯი — ყველაფერი დამზადებულია უმაღლესი ხარისხით.</p>
     <div class="hero-btns">
-      <button class="btn btn-ghost" onclick="goProjects()">ყველა პროექტი</button>
-      <a href="#contact" class="btn btn-primary">დაგვიკავშირდით შესაკვეთად</a>
+      <button class="btn btn-ghost" onclick="goProjects()">ყველა პროექტის ნახვა</button>
+      <a href="#contact" class="btn btn-primary">შეგვიკვეთეთ</a>
     </div>
-    <div class="scroll-hint">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-    </div>
+    <div class="scroll-hint"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div>
   </section>
 
-  <!-- GALLERY PREVIEW -->
   <section id="work">
     <div class="section-inner">
       <div class="gallery-header text-center">
         <span class="section-tag">პორტფოლიო</span>
         <h2 class="section-h2">შერჩეული ნამუშევრები</h2>
-        <span class="divider" style="margin:0 auto 0;"></span>
+        <span class="divider" style="margin:0 auto;"></span>
       </div>
       <div class="masonry">
         <div class="masonry-item" style="height:320px"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&auto=format&fit=crop" loading="lazy" alt=""/><div class="masonry-overlay"><span class="masonry-label">Scandinavian Kitchen</span></div></div>
@@ -380,13 +341,10 @@ section { padding: 100px 24px; }
         <div class="masonry-item" style="height:300px"><img src="https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=700&q=80&auto=format&fit=crop" loading="lazy" alt=""/><div class="masonry-overlay"><span class="masonry-label">Custom Wardrobe</span></div></div>
         <div class="masonry-item" style="height:220px"><img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=700&q=80&auto=format&fit=crop" loading="lazy" alt=""/><div class="masonry-overlay"><span class="masonry-label">Minimalist Kitchen</span></div></div>
       </div>
-      <div class="view-all-wrap">
-        <button class="btn btn-primary" onclick="goProjects()">ყველა ნამუშევრის ნახვა</button>
-      </div>
+      <div class="view-all-wrap"><button class="btn btn-primary" onclick="goProjects()">ყველა პროექტის ნახვა</button></div>
     </div>
   </section>
 
-  <!-- PROCESS -->
   <section id="process">
     <div class="section-inner">
       <div class="text-center">
@@ -395,57 +353,43 @@ section { padding: 100px 24px; }
         <span class="divider" style="margin:0 auto;"></span>
       </div>
       <div class="steps-grid">
-        <div class="step-card">
-          <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-          <div class="step-num">01</div><h3 class="step-title">კონსულტაცია</h3>
-          <p class="step-desc">ჩვენ ვიწყებთ თქვენი სივრცის, ცხოვრების წესისა და ხედვის ღრმად ჩაღრმავებით — ზუსტად იმის გაგებით, თუ როგორ ცხოვრობთ და რა გჭირდებათ.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-          <div class="step-num">02</div><h3 class="step-title">დიზაინი</h3>
-          <p class="step-desc">ჩვენი ხელოსნები ავითარებენ დეტალურ ნახაზებს და მასალების შერჩევას, რაც მდგრადი წყაროებიდან მოპოვებულ ხე-ტყეს თქვენს ესთეტიკასთან აკავშირებს.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-          <div class="step-num">03</div><h3 class="step-title">მონტაჟი</h3>
-          <p class="step-desc">თითოეული ნივთი ხელით იწარმოება ჩვენს სახელოსნოში და დამონტაჟებულია თეთრი ხელთათმანის სიზუსტით, რაც თქვენს სივრცეს ზუსტად ისე ტოვებს, როგორც წარმოგიდგენიათ.</p>
-        </div>
+        <div class="step-card"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="step-num">01</div><h3 class="step-title">კონსულტაცია</h3><p class="step-desc">ვიწყებთ თქვენი სივრცის, ცხოვრების სტილისა და ხედვის დეტალური გაცნობით — რათა ზუსტად გავიგოთ, როგორ ცხოვრობთ და რა გჭირდებათ.</p></div>
+        <div class="step-card"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="step-num">02</div><h3 class="step-title">დიზაინი</h3><p class="step-desc">ჩვენი ოსტატები ამზადებენ დეტალურ ნახაზებსა და მასალების შერჩევას, აერთიანებენ ეკოლოგიურად მოპოვებულ ხის მასალებს თქვენს ესთეტიკასთან.</p></div>
+        <div class="step-card"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="step-num">03</div><h3 class="step-title">მონტაჟი</h3><p class="step-desc">თითოეული ნამუშევარი ხელით მზადდება ჩვენს სახელოსნოში და მონტაჟდება უმაღლესი სიზუსტითა და პროფესიონალიზმით — რათა თქვენი სივრცე ზუსტად ისეთი იყოს, როგორიც წარმოგედგინათ.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-text">
           <span class="section-tag">ჩვენს შესახებ</span>
-          <h2 class="section-h2">ხელოსნობაში დაფუძნებული,<br><em style="font-style:italic;">აშენებულია სიცოცხლისთვის</em></h2>
+          <h2 class="section-h2">ოსტატობაზე დაფუძნებული,<br><em style="font-style:italic;">ცხოვრებისთვის შექმნილი</em></h2>
           <span class="divider" style="margin-bottom:28px;"></span>
-          <p>კომპანია დაარსდა იმ რწმენით, რომ შესანიშნავი ავეჯი ზრუნვის აქტია — როგორც ოჯახისთვის, რომელიც მას იღებს, ასევე იმ ტყეებისთვის, საიდანაც ვისესხებთ. ყველა შეერთება ხელით არის მორგებული. ყველა ზედაპირი ხელით არის დამუშავებული.</p>
-          <p>ჩვენ მუხას, კაკალს და იფანს სერტიფიცირებული ქართული ტყეებიდან ვიღებთ, რაც უზრუნველყოფს, რომ თითოეული ნივთი თავისი წარმოშობის ისტორიას და საუკუნოვანი გამოყენების დაპირებას ატარებს.</p>
+          <p>დაარსებული თბილისში, შეიქმნა რწმენით, რომ შესანიშნავი ავეჯი ზრუნვის გამოხატულებაა — როგორც იმ ოჯახისთვის, ვინც მას იღებს, ასევე ბუნებისთვის, საიდანაც მასალა მოდის. თითოეული შეერთება ხელით მუშავდება, ხოლო ყოველი ზედაპირი ხელით სრულდება უმაღლესი ხარისხით.</p>
+          <p>ჩვენ ვიყენებთ მუხის, კაკლისა და იფნის ხეს სერტიფიცირებული ქართული ტყეებიდან, რათა თითოეულ ნამუშევარს თან ახლდეს თავისი წარმოშობის ისტორია და მრავალწლიანი გამძლეობის პირობა.</p>
         </div>
         <div class="about-img-wrap">
           <img src="https://images.unsplash.com/photo-1449247613801-ab06418e2861?w=900&q=80&auto=format&fit=crop" alt="Workshop" loading="lazy"/>
           <div class="about-img-overlay"></div>
-          <p class="about-img-caption">Est. 2014 &middot; Tbilisi, Georgia</p>
+          <p class="about-img-caption">Est. 2014 &middot; თბილისი, საქართველო</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
   <section id="contact">
     <div class="section-inner">
       <div class="contact-grid">
         <div>
           <span class="section-tag" style="color:var(--wood-lt)">დაგვიკავშირდით</span>
-          <h2 class="section-h2 contact-h2">ერთად შევქმნათ<br><em>შედევრი</em></h2>
+          <h2 class="section-h2 contact-h2">ერთად შევქმნათ<br><em>რაღაც განსაკუთრებული</em></h2>
           <span class="divider"></span>
-          <p class="contact-body">სრული ინფორმაცია გაქვთ თუ უბრალოდ იდეა, სიამოვნებით მოვისმენთ თქვენი პროექტის შესახებ. ჩვენი გუნდი, როგორც წესი, ერთ სამუშაო დღეში გიპასუხებთ.</p>
-          <p class="contact-detail-label">Email</p><p class="contact-detail-val">Roba.ge</p>
+          <p class="contact-body">გაქვთ უკვე სრული ხედვა თუ მხოლოდ იდეა — სიამოვნებით მოვისმენთ თქვენი პროექტის შესახებ.</p>
+          <p class="contact-detail-label">Email</p><p class="contact-detail-val">Roba@aveji.ge</p>
           <p class="contact-detail-label">Phone</p><p class="contact-detail-val">+995 32 000 0000</p>
-          <p class="contact-detail-label">Studio</p><p class="contact-detail-val">აეროპორტის დასახლება, Tbilisi</p>
+          <p class="contact-detail-label">Studio</p><p class="contact-detail-val">აეროპორტის დასახლება, თბილისი</p>
           <div class="socials">
             <button class="social-btn"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></button>
             <button class="social-btn"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></button>
@@ -453,114 +397,177 @@ section { padding: 100px 24px; }
           </div>
         </div>
         <div>
-          <form id="contact-form" onsubmit="handleSubmit(event)">
-            <div class="form-group"><input class="form-input" type="text" placeholder="თქვენი სახელი" required/></div>
-            <div class="form-group"><input class="form-input" type="email" placeholder="მეილი" required/></div>
-            <div class="form-group"><input class="form-input" type="tel" placeholder="ტელეფონის ნომერი"/></div>
-            <div class="form-group"><textarea class="form-textarea" placeholder="მოგვიყევით თქვენს პროექტზე" rows="5" required></textarea></div>
-            <button type="submit" class="btn-submit">გამოგვიგზავნეთ შეტყობინება</button>
-          </form>
-          <div class="success-msg" id="success-msg">
-            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg>
-            <h3 class="success-title">შეტყობინება გაიგზავნა</h3>
-            <p class="success-sub">მალე დაგიკავშირდებით</p>
-          </div>
+          
         </div>
       </div>
       <div class="footer-bar">
-        <span class="footer-logo">Modern Woodcraft</span>
+        <span class="footer-logo">რობაქიძეების ავეჯი</span>
         <span class="footer-copy">&copy; 2026 &middot; Tbilisi, Georgia &middot; All Rights Reserved</span>
       </div>
     </div>
   </section>
+</div>
 
-</div><!-- /page-home -->
-
-<!-- ══════════════════════════════════════
-     PROJECTS PAGE
-══════════════════════════════════════ -->
+<!-- ══════════ PROJECTS PAGE ══════════ -->
 <div id="page-projects" class="page">
-
   <div class="proj-hero">
-    <button class="back-btn" onclick="goHome()">
-      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-      მთავარ გვერდზე დაბრუნება
-    </button>
+    <button class="back-btn" onclick="goHome()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>მთავარ გვერდზე დაბრუნება</button>
     <span class="section-tag">პორტფოლიო</span>
     <h1>ყველა <em>პროექტი</em></h1>
-    <p>დაათვალიერეთ ჩვენს მიერ შესრულებული ყველა ნამუშევარი — გაფილტრეთ კატეგორიის მიხედვით ან ატვირთეთ თქვენი ფოტოები</p>
+    <p>დაათვალიერეთ ჩვენი ყველა შექმნილი ნამუშევარი — გაფილტრეთ კატეგორიების მიხედვით</p>
   </div>
 
-  <!-- Filter -->
   <div class="filter-bar">
     <div class="filter-inner">
       <button class="filter-btn active" onclick="setFilter('all',this)">ყველა</button>
       <button class="filter-btn" onclick="setFilter('kitchens',this)">სამზარეულო</button>
       <button class="filter-btn" onclick="setFilter('living',this)">მისაღები ოთახი</button>
-      <button class="filter-btn" onclick="setFilter('dining',this)">მაგიდები</button>
-      <button class="filter-btn" onclick="setFilter('bedrooms',this)">საძილენელი ოთახი</button>
+      <button class="filter-btn" onclick="setFilter('dining',this)">სასადილო ოთახი</button>
+      <button class="filter-btn" onclick="setFilter('bedrooms',this)">საძინებელი ოთახი</button>
       <button class="filter-btn" onclick="setFilter('storage',this)">საწყობი</button>
       <button class="filter-btn" onclick="setFilter('outdoor',this)">გარე ავეჯი</button>
       <button class="filter-btn" onclick="setFilter('custom',this)">ზოგადი</button>
     </div>
   </div>
 
-  <!-- Upload -->
-  <div class="upload-bar">
-    <label class="upload-zone" for="file-input">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      <span><strong>ატვირთე ფოტო</strong> — დააკლიკე რო დაემატოს სურათი</span>
-    </label>
-    <input type="file" id="file-input" accept="image/*" multiple onchange="onFilesChosen(event)"/>
-    <span class="proj-count" id="proj-count">9 პროექტი</span>
+  <div class="add-bar">
+    <button class="add-btn-main" onclick="openModal()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      დაამატე პროექტი
+    </button>
+    <span class="proj-count" id="proj-count"></span>
   </div>
 
-  <!-- Grid -->
   <div class="proj-grid-wrap">
     <div class="proj-grid" id="proj-grid"></div>
     <div class="empty-state" id="empty-state">
       <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      <h3>ამ კატეგორიაში არ არის პროექტი</h3>
-      <p>ატვირთეთ ფოტოები ზემოთ ან აირჩიეთ სხვა ფილტრი.</p>
+      <h3>ჯერჯერობით არ არის პროექტი</h3>
+      <p>დაამატე პროექტი ღილაკზე დაჭერით.</p>
+      <button class="btn btn-primary" onclick="openModal()">დაამატე პროექტი</button>
     </div>
   </div>
-
-</div><!-- /page-projects -->
+</div>
 
 <!-- ══════════ ADD PROJECT MODAL ══════════ -->
 <div class="modal-bg" id="modal-bg">
   <div class="modal-box">
     <button class="modal-x" onclick="closeModal()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    <h2 class="modal-title">დაამატე პროექტი</h2>
-    <img class="modal-preview" id="modal-preview" src="" alt=""/>
-    <div class="mfield">
-      <label class="mlabel">სახელი</label>
-      <input class="minput" id="m-name" type="text" placeholder="e.g. Oak Kitchen — Vake District"/>
+    <div class="modal-header">
+      <h2 class="modal-title">დაამატე პროექტი</h2>
+      <p class="modal-sub">აირჩიე როგორ გინდა ფოტოს დამატება</p>
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('url', this)">🔗 ჩასვი სურათის ლინკი</button>
+        <button class="tab-btn" onclick="switchTab('file', this)">📁 ატვირთე მოწყობილობიდან</button>
+        <button class="tab-btn" onclick="switchTab('bulk', this)">📋 ლინკის დამატება (URLs)</button>
+      </div>
     </div>
-    <div class="mfield">
-      <label class="mlabel">კატეგორია</label>
-      <select class="mselect" id="m-cat">
-        <option value="kitchens">სამზარეული</option>
-        <option value="living">მისაღები ოთახი</option>
-        <option value="dining">მაგიდები</option>
-        <option value="bedrooms">საძილენელი</option>
-        <option value="storage">საწყობი</option>
-        <option value="outdoor">გარე სივრცეები</option>
-        <option value="custom">ზოგადი</option>
-      </select>
-    </div>
-    <div class="mfield">
-      <label class="mlabel">მოკლე აღწერა</label>
-      <textarea class="mtextarea" id="m-desc" rows="2" placeholder="e.g. Solid oak, integrated appliances, 2024"></textarea>
-    </div>
-    <div class="modal-actions">
-      <button class="btn btn-cancel" onclick="closeModal()">გამოტოვე</button>
-      <button class="btn btn-primary" onclick="saveProject()">დაამატე პორტფოლიოში</button>
+    <div class="modal-body">
+
+      <!-- TAB: URL -->
+      <div class="tab-panel active" id="tab-url">
+        <div class="url-instructions">
+          <p><strong>როგორ დავამატოთ გასაზიარებელი სურათის ლინკი:</strong></p>
+          <p>• <strong>Google Drive:</strong> მარჯვენა ღილაკი ფოტოზე → Share → Copy link. ჩასვით აქ და დააკლიკეთ "Convert Link" ღილაკს.</p>
+          <p>• <strong>Dropbox:</strong> მარჯვენა ღილაკიk → Copy Dropbox link (change <code>dl=0</code> to <code>dl=1</code> at the end).</p>
+          <p>• <strong>Imgur:</strong> ატვირთეთ აქ <a href="https://imgur.com" target="_blank">imgur.com</a> → მარჯვენა ღილაკი ფოტოზე → Copy image address.</p>
+          <p>• <strong>პირდაპირი ფოტო URL</strong> მთავრდებოდეს  in .jpg / .png / .webp ესეც წავა.</p>
+        </div>
+        <div class="mfield">
+          <label class="mlabel">Image URL</label>
+          <div style="display:flex;gap:8px;align-items:flex-end;">
+            <input class="minput" id="url-input" type="url" placeholder="https://drive.google.com/... or https://i.imgur.com/..." oninput="onUrlInput()" style="flex:1;"/>
+            <button onclick="convertGdriveUrl()" style="background:var(--linen);border:1px solid rgba(44,44,44,0.15);padding:10px 14px;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--charcoal);white-space:nowrap;transition:background 0.2s;" onmouseover="this.style.background='#e0ddd7'" onmouseout="this.style.background='var(--linen)'">Convert Link</button>
+          </div>
+          <div class="url-error" id="url-error">Could not load image. Please check the URL or try a different one.</div>
+        </div>
+        <div class="url-preview-wrap" id="url-preview-wrap">
+          <div class="url-preview-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <div>Image preview will appear here</div>
+          </div>
+          <img id="url-preview-img" src="" alt="" onload="onUrlPreviewLoad()" onerror="onUrlPreviewError()"/>
+        </div>
+      </div>
+
+      <!-- TAB: FILE -->
+      <div class="tab-panel" id="tab-file">
+        <div class="file-warn" id="file-warn">
+          ⚠️ <strong>Storage limit:</strong> Uploaded files are saved in your browser and limited to ~5MB total. For 100+ projects, we recommend using image links (first tab) instead.
+        </div>
+        <div class="file-drop" id="file-drop" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          <p><strong>Click to upload</strong> or drag & drop your photo here</p>
+          <p style="margin-top:6px;font-size:0.72rem;">JPG, PNG, WEBP supported</p>
+          <input type="file" id="file-input" accept="image/*" onchange="onFileChosen(event)"/>
+        </div>
+        <div class="file-preview-wrap" id="file-preview-wrap">
+          <img id="file-preview-img" src="" alt=""/>
+        </div>
+        <p class="file-preview-note" id="file-preview-note"></p>
+      </div>
+
+      <!-- TAB: BULK -->
+      <div class="tab-panel" id="tab-bulk">
+        <div class="url-instructions">
+          <p><strong>Add multiple projects at once.</strong> Paste one image URL per line. Each URL will be added as a separate project in the category you select below.</p>
+          <p>You can rename them individually after adding.</p>
+        </div>
+        <div class="mfield">
+          <label class="mlabel">Image URLs — one per line</label>
+          <textarea class="bulk-textarea" id="bulk-urls" placeholder="https://i.imgur.com/abc123.jpg&#10;https://i.imgur.com/def456.jpg&#10;https://i.imgur.com/ghi789.jpg"></textarea>
+        </div>
+        <div class="mfield">
+          <label class="mlabel">ყველა კატეგორია</label>
+          <select class="mselect" id="bulk-cat">
+            <option value="kitchens">სამზარეულო</option>
+            <option value="living">მისაღები ოთახი</option>
+            <option value="dining">სასადილო ოთახი</option>
+            <option value="bedrooms">საძინებელი ოთახი</option>
+            <option value="storage">საწყობი</option>
+            <option value="outdoor">გარე ავეჯი</option>
+            <option value="custom">ზოგადი</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" onclick="saveBulk()">დაამატე ყველა პროექტი</button>
+        </div>
+      </div>
+
+      <!-- Shared fields (shown for url + file tabs) -->
+      <div id="shared-fields">
+        <div class="mfield">
+          <label class="mlabel">პროექტის სახელი</label>
+          <input class="minput" id="m-name" type="text" placeholder="e.g. Oak Kitchen — Vake District"/>
+        </div>
+        <div class="mfield">
+          <label class="mlabel">კატეგორია</label>
+          <select class="mselect" id="m-cat">
+            <option value="kitchens">სამზარეულო</option>
+            <option value="living">მისაღები ოთახი</option>
+            <option value="dining">სასადილო ოთახი</option>
+            <option value="bedrooms">საძინებელი ოთახი/option>
+            <option value="storage">საწყობი</option>
+            <option value="outdoor">გარე ავეჯი</option>
+            <option value="custom">ზოგადი</option>
+          </select>
+        </div>
+        <div class="mfield">
+          <label class="mlabel">მოკლე აღწერა (optional)</label>
+          <textarea class="mtextarea" id="m-desc" rows="2" placeholder="e.g. Solid oak, integrated appliances, 2024"></textarea>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+          <button class="btn btn-primary" id="save-btn" onclick="saveProject()">შეინახე პროექტი</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- ══════════ LIGHTBOX ══════════ -->
+<!-- LIGHTBOX -->
 <div class="lb" id="lb" onclick="lbBgClick(event)">
   <button class="lb-close" onclick="closeLb()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
   <button class="lb-nav lb-prev" onclick="lbMove(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
@@ -573,94 +580,88 @@ section { padding: 100px 24px; }
 </div>
 
 <script>
-/* ─── DATA ─── */
+/* ═══════════════════════════════════════
+   DATA & STORAGE
+═══════════════════════════════════════ */
+const STORAGE_KEY = 'mwc_projects_v2';
 const CAT_LABELS = { kitchens:'Kitchens', living:'Living Rooms', dining:'Dining', bedrooms:'Bedrooms', storage:'Storage', outdoor:'Outdoor', custom:'Custom' };
 
-let projects = [
-  {id:1, name:'Nordic Kitchen — Vake',    cat:'kitchens', desc:'Full oak kitchen with integrated stone worktop, 2023', img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&auto=format&fit=crop'},
-  {id:2, name:'Minimalist Kitchen',        cat:'kitchens', desc:'Handle-free cabinetry in ash wood, 2024',             img:'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=700&q=80&auto=format&fit=crop'},
-  {id:3, name:'Walnut Sofa Set',           cat:'living',   desc:'Solid walnut frame, bespoke upholstery, 2023',        img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80&auto=format&fit=crop'},
-  {id:4, name:'Living Room Suite',         cat:'living',   desc:'Full room furniture in oak and linen, 2024',          img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80&auto=format&fit=crop'},
-  {id:5, name:'Oak Dining Table',          cat:'dining',   desc:'2.4m solid oak table, seats 10, 2023',               img:'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=80&auto=format&fit=crop'},
-  {id:6, name:'Custom Wardrobe',           cat:'storage',  desc:'Floor-to-ceiling fitted wardrobe, 2024',              img:'https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=700&q=80&auto=format&fit=crop'},
-  {id:7, name:'Open Shelf Unit',           cat:'storage',  desc:'Wall-mounted oak shelving, 2023',                     img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80&auto=format&fit=crop'},
-  {id:8, name:'Bedroom Collection',        cat:'bedrooms', desc:'Bed frame, side tables and dresser in ash, 2024',     img:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=80&auto=format&fit=crop'},
-  {id:9, name:'Reading Nook',              cat:'custom',   desc:'Built-in window seat with hidden storage, 2024',      img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=80&auto=format&fit=crop'},
+const DEFAULT_PROJECTS = [
+  {id:1, name:'Nordic Kitchen — Vake',  cat:'kitchens', desc:'Full oak kitchen with integrated stone worktop, 2023', img:'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=700&q=80&auto=format&fit=crop'},
+  {id:2, name:'Minimalist Kitchen',      cat:'kitchens', desc:'Handle-free cabinetry in ash wood, 2024',             img:'https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=700&q=80&auto=format&fit=crop'},
+  {id:3, name:'Walnut Sofa Set',         cat:'living',   desc:'Solid walnut frame, bespoke upholstery, 2023',        img:'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=700&q=80&auto=format&fit=crop'},
+  {id:4, name:'Living Room Suite',       cat:'living',   desc:'Full room furniture in oak and linen, 2024',          img:'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80&auto=format&fit=crop'},
+  {id:5, name:'Oak Dining Table',        cat:'dining',   desc:'2.4m solid oak table, seats 10, 2023',               img:'https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=700&q=80&auto=format&fit=crop'},
+  {id:6, name:'Custom Wardrobe',         cat:'storage',  desc:'Floor-to-ceiling fitted wardrobe, 2024',              img:'https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?w=700&q=80&auto=format&fit=crop'},
+  {id:7, name:'Open Shelf Unit',         cat:'storage',  desc:'Wall-mounted oak shelving, 2023',                     img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80&auto=format&fit=crop'},
+  {id:8, name:'Bedroom Collection',      cat:'bedrooms', desc:'Bed frame, side tables and dresser in ash, 2024',     img:'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=700&q=80&auto=format&fit=crop'},
+  {id:9, name:'Reading Nook',            cat:'custom',   desc:'Built-in window seat with hidden storage, 2024',      img:'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=700&q=80&auto=format&fit=crop'},
 ];
 
-let nextId = 10;
-let activeFilter = 'all';
-let lbIndex = 0;
-let lbList = [];
-let fileQueue = [];
-let pendingImg = null;
+function loadProjects() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) { const p = JSON.parse(raw); if (Array.isArray(p) && p.length) return p; }
+  } catch(e) {}
+  saveToStorage(DEFAULT_PROJECTS);
+  return DEFAULT_PROJECTS.slice();
+}
+function saveToStorage(list) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); return true; }
+  catch(e) { alert('Storage is full. Please delete some projects before adding new ones.'); return false; }
+}
 
-/* ─── PAGE SWITCHING ─── */
+let projects = loadProjects();
+let nextId = projects.length ? Math.max(...projects.map(p => p.id)) + 1 : 1;
+let activeFilter = 'all';
+let activeTab = 'url';
+let pendingFileImg = null;
+let lbIndex = 0, lbList = [];
+
+/* ═══════════════════════════════════════
+   PAGE SWITCHING
+═══════════════════════════════════════ */
 function goHome() {
   document.getElementById('page-home').classList.add('active');
   document.getElementById('page-projects').classList.remove('active');
   document.getElementById('navbar').classList.remove('solid');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 function goProjects() {
   document.getElementById('page-home').classList.remove('active');
   document.getElementById('page-projects').classList.add('active');
   document.getElementById('navbar').classList.add('solid');
   renderGrid();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top:0, behavior:'smooth' });
 }
 
-/* ─── NAV ─── */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
   if (document.getElementById('page-home').classList.contains('active'))
     navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 let menuOpen = false;
-function toggleMenu() {
-  menuOpen = !menuOpen;
-  document.getElementById('hamburger').classList.toggle('open', menuOpen);
-  document.getElementById('mobile-nav').classList.toggle('open', menuOpen);
-}
-function closeMenu() {
-  menuOpen = false;
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('mobile-nav').classList.remove('open');
-}
+function toggleMenu() { menuOpen=!menuOpen; document.getElementById('hamburger').classList.toggle('open',menuOpen); document.getElementById('mobile-nav').classList.toggle('open',menuOpen); }
+function closeMenu() { menuOpen=false; document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-nav').classList.remove('open'); }
+function handleSubmit(e) { e.preventDefault(); document.getElementById('contact-form').style.display='none'; document.getElementById('success-msg').classList.add('show'); }
 
-/* ─── CONTACT FORM ─── */
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('contact-form').style.display = 'none';
-  document.getElementById('success-msg').classList.add('show');
-}
-
-/* ─── FILTER ─── */
+/* ═══════════════════════════════════════
+   FILTER & RENDER
+═══════════════════════════════════════ */
 function setFilter(cat, btn) {
   activeFilter = cat;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderGrid();
 }
-
-/* ─── RENDER GRID ─── */
 function renderGrid() {
   const grid = document.getElementById('proj-grid');
   const empty = document.getElementById('empty-state');
-  const countEl = document.getElementById('proj-count');
-
   const list = activeFilter === 'all' ? projects : projects.filter(p => p.cat === activeFilter);
   lbList = list;
-
-  countEl.textContent = list.length + ' project' + (list.length !== 1 ? 's' : '');
-
-  if (!list.length) {
-    grid.innerHTML = '';
-    empty.classList.add('show');
-    return;
-  }
+  document.getElementById('proj-count').textContent = projects.length + ' project' + (projects.length !== 1 ? 's' : '') + (activeFilter !== 'all' ? ' · ' + list.length + ' shown' : '');
+  if (!list.length) { grid.innerHTML = ''; empty.classList.add('show'); return; }
   empty.classList.remove('show');
-
   grid.innerHTML = list.map((p, i) => `
     <div class="proj-card">
       <div class="proj-card-img-wrap" onclick="openLb(${i})">
@@ -669,95 +670,190 @@ function renderGrid() {
       <div class="proj-card-body">
         <span class="proj-card-cat">${CAT_LABELS[p.cat] || p.cat}</span>
         <div class="proj-card-name">${p.name}</div>
-        <div class="proj-card-desc">${p.desc}</div>
+        <div class="proj-card-desc">${p.desc || ''}</div>
       </div>
-      <button class="proj-delete" onclick="deleteProject(${p.id})" title="Remove project">
+      <button class="proj-delete" onclick="deleteProject(${p.id})" title="Remove">
         <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
       </button>
     </div>
   `).join('');
 }
-
-/* ─── DELETE ─── */
 function deleteProject(id) {
   if (!confirm('Remove this project?')) return;
   projects = projects.filter(p => p.id !== id);
+  saveToStorage(projects);
   renderGrid();
 }
 
-/* ─── FILE UPLOAD ─── */
-function onFilesChosen(e) {
-  fileQueue = Array.from(e.target.files);
-  e.target.value = '';
-  processNextFile();
+/* ═══════════════════════════════════════
+   MODAL
+═══════════════════════════════════════ */
+function openModal() {
+  document.getElementById('modal-bg').classList.add('show');
+  document.getElementById('m-name').value = '';
+  document.getElementById('m-desc').value = '';
+  document.getElementById('m-cat').value = 'kitchens';
+  document.getElementById('url-input').value = '';
+  document.getElementById('url-preview-img').src = '';
+  document.getElementById('url-preview-img').classList.remove('show');
+  document.getElementById('url-error').classList.remove('show');
+  document.getElementById('file-preview-wrap').classList.remove('show');
+  document.getElementById('file-preview-note').textContent = '';
+  pendingFileImg = null;
+  switchTab('url', document.querySelector('.tab-btn'));
+  // Show warning on file tab
+  document.getElementById('file-warn').classList.add('show');
 }
-function processNextFile() {
-  if (!fileQueue.length) return;
-  const file = fileQueue.shift();
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('show');
+  pendingFileImg = null;
+}
+
+function switchTab(tab, btn) {
+  activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  // Show/hide shared fields
+  document.getElementById('shared-fields').style.display = tab === 'bulk' ? 'none' : 'block';
+}
+
+/* ── URL TAB ── */
+let urlDebounce;
+function onUrlInput() {
+  clearTimeout(urlDebounce);
+  urlDebounce = setTimeout(tryLoadUrl, 600);
+}
+function tryLoadUrl() {
+  let url = document.getElementById('url-input').value.trim();
+  if (!url) return;
+  url = convertGdriveRaw(url);
+  document.getElementById('url-input').value = url;
+  const img = document.getElementById('url-preview-img');
+  img.classList.remove('show');
+  document.getElementById('url-error').classList.remove('show');
+  img.src = url;
+}
+function convertGdriveUrl() {
+  const input = document.getElementById('url-input');
+  input.value = convertGdriveRaw(input.value.trim());
+  tryLoadUrl();
+}
+function convertGdriveRaw(url) {
+  // Convert Google Drive share link to direct image link
+  const m = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if (m) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
+  const m2 = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+  if (m2) return `https://drive.google.com/uc?export=view&id=${m2[1]}`;
+  // Dropbox: ensure direct download
+  if (url.includes('dropbox.com')) return url.replace('dl=0','dl=1').replace('www.dropbox','dl.dropboxusercontent');
+  return url;
+}
+function onUrlPreviewLoad() {
+  document.getElementById('url-preview-img').classList.add('show');
+  document.getElementById('url-error').classList.remove('show');
+  // Auto-fill name from URL if empty
+  if (!document.getElementById('m-name').value) {
+    const url = document.getElementById('url-input').value;
+    const parts = url.split('/').pop().split('?')[0].replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
+    if (parts.length > 2) document.getElementById('m-name').value = parts.replace(/\b\w/g, c => c.toUpperCase());
+  }
+}
+function onUrlPreviewError() {
+  document.getElementById('url-preview-img').classList.remove('show');
+  const url = document.getElementById('url-input').value.trim();
+  if (url) document.getElementById('url-error').classList.add('show');
+}
+
+/* ── FILE TAB ── */
+function onFileChosen(e) { handleFile(e.target.files[0]); }
+function onDragOver(e) { e.preventDefault(); document.getElementById('file-drop').classList.add('drag'); }
+function onDragLeave() { document.getElementById('file-drop').classList.remove('drag'); }
+function onDrop(e) { e.preventDefault(); document.getElementById('file-drop').classList.remove('drag'); if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); }
+function handleFile(file) {
+  if (!file) return;
+  const img = new Image();
   const reader = new FileReader();
   reader.onload = ev => {
-    pendingImg = ev.target.result;
-    openModal(pendingImg);
+    img.onload = () => {
+      const MAX = 1200; let w = img.width, h = img.height;
+      if (w > MAX) { h = Math.round(h*MAX/w); w = MAX; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+      pendingFileImg = canvas.toDataURL('image/jpeg', 0.75);
+      const prev = document.getElementById('file-preview-img');
+      prev.src = pendingFileImg;
+      document.getElementById('file-preview-wrap').classList.add('show');
+      const kb = Math.round(pendingFileImg.length * 0.75 / 1024);
+      document.getElementById('file-preview-note').textContent = `Compressed to ~${kb}KB`;
+      if (!document.getElementById('m-name').value) {
+        const name = file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+        document.getElementById('m-name').value = name;
+      }
+    };
+    img.src = ev.target.result;
   };
   reader.readAsDataURL(file);
 }
 
-/* ─── MODAL ─── */
-function openModal(src) {
-  document.getElementById('m-name').value = '';
-  document.getElementById('m-desc').value = '';
-  document.getElementById('m-cat').value = 'kitchens';
-  const prev = document.getElementById('modal-preview');
-  prev.src = src; prev.classList.add('show');
-  document.getElementById('modal-bg').classList.add('show');
-}
-function closeModal() {
-  document.getElementById('modal-bg').classList.remove('show');
-  pendingImg = null;
-  processNextFile(); // process next file in queue if any
-}
+/* ── SAVE PROJECT ── */
 function saveProject() {
+  let img = '';
+  if (activeTab === 'url') {
+    img = document.getElementById('url-input').value.trim();
+    img = convertGdriveRaw(img);
+    if (!img) { alert('Please enter an image URL.'); return; }
+  } else if (activeTab === 'file') {
+    if (!pendingFileImg) { alert('Please select a photo.'); return; }
+    img = pendingFileImg;
+  }
   const name = document.getElementById('m-name').value.trim() || 'Untitled Project';
   const cat  = document.getElementById('m-cat').value;
   const desc = document.getElementById('m-desc').value.trim();
-  projects.unshift({ id: nextId++, name, cat, desc, img: pendingImg });
-  document.getElementById('modal-bg').classList.remove('show');
-  pendingImg = null;
+  projects.unshift({ id: nextId++, name, cat, desc, img });
+  if (!saveToStorage(projects)) { projects.shift(); nextId--; return; }
+  closeModal();
   renderGrid();
-  processNextFile();
 }
 
-/* ─── LIGHTBOX ─── */
-function openLb(i) {
-  lbIndex = i;
-  showLbItem();
-  document.getElementById('lb').classList.add('show');
-  document.body.style.overflow = 'hidden';
+/* ── BULK SAVE ── */
+function saveBulk() {
+  const raw = document.getElementById('bulk-urls').value.trim();
+  const cat = document.getElementById('bulk-cat').value;
+  if (!raw) { alert('Please paste at least one URL.'); return; }
+  const urls = raw.split('\n').map(u => u.trim()).filter(u => u.length > 5);
+  if (!urls.length) { alert('No valid URLs found.'); return; }
+  const newProjects = urls.map((url, i) => ({
+    id: nextId++,
+    name: `${CAT_LABELS[cat]} Project ${projects.length + i + 1}`,
+    cat, desc: '', img: convertGdriveRaw(url)
+  }));
+  projects.unshift(...newProjects);
+  if (!saveToStorage(projects)) { projects.splice(0, newProjects.length); nextId -= newProjects.length; return; }
+  closeModal();
+  renderGrid();
+  alert(`✓ ${newProjects.length} project${newProjects.length > 1 ? 's' : ''} added successfully!`);
 }
-function showLbItem() {
-  const p = lbList[lbIndex];
-  if (!p) return;
-  document.getElementById('lb-img').src = p.img;
-  document.getElementById('lb-name').textContent = p.name;
-  document.getElementById('lb-cat').textContent = CAT_LABELS[p.cat] || p.cat;
-}
-function lbMove(dir) {
-  lbIndex = (lbIndex + dir + lbList.length) % lbList.length;
-  showLbItem();
-}
-function closeLb() {
-  document.getElementById('lb').classList.remove('show');
-  document.body.style.overflow = '';
-}
-function lbBgClick(e) { if (e.target === document.getElementById('lb')) closeLb(); }
+
+/* ═══════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════ */
+function openLb(i) { lbIndex = i; showLbItem(); document.getElementById('lb').classList.add('show'); document.body.style.overflow='hidden'; }
+function showLbItem() { const p=lbList[lbIndex]; if(!p)return; document.getElementById('lb-img').src=p.img; document.getElementById('lb-name').textContent=p.name; document.getElementById('lb-cat').textContent=CAT_LABELS[p.cat]||p.cat; }
+function lbMove(dir) { lbIndex=(lbIndex+dir+lbList.length)%lbList.length; showLbItem(); }
+function closeLb() { document.getElementById('lb').classList.remove('show'); document.body.style.overflow=''; }
+function lbBgClick(e) { if(e.target===document.getElementById('lb')) closeLb(); }
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lb').classList.contains('show')) return;
-  if (e.key === 'ArrowLeft') lbMove(-1);
-  if (e.key === 'ArrowRight') lbMove(1);
-  if (e.key === 'Escape') closeLb();
+  if (e.key==='ArrowLeft') lbMove(-1);
+  if (e.key==='ArrowRight') lbMove(1);
+  if (e.key==='Escape') closeLb();
 });
+// Close modal on bg click
+document.getElementById('modal-bg').addEventListener('click', e => { if (e.target===document.getElementById('modal-bg')) closeModal(); });
 
-// Init
 renderGrid();
 </script>
 </body>
