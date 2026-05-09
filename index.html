@@ -16,9 +16,9 @@ button { font-family: 'Jost', sans-serif; cursor: pointer; }
 .page.active { display: block !important; }
 
 /* NAV */
-#navbar { position: fixed; top:0; left:0; right:0; z-index:200; transition: background 0.35s, box-shadow 0.35s; border-bottom: 1px solid transparent; }
-#navbar.scrolled { background: rgba(248,246,242,0.95); backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(160,82,45,0.1); border-color: rgba(160,82,45,0.1); }
-#navbar.solid { background: rgba(248,246,242,0.97); backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(160,82,45,0.1); border-color: rgba(160,82,45,0.1); }
+#navbar { position:fixed; top:0; left:0; right:0; z-index:200; transition:background 0.35s,box-shadow 0.35s; border-bottom:1px solid transparent; }
+#navbar.scrolled { background:rgba(248,246,242,0.95); backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(160,82,45,0.1); border-color:rgba(160,82,45,0.1); }
+#navbar.solid { background:rgba(248,246,242,0.97); backdrop-filter:blur(14px); box-shadow:0 1px 0 rgba(160,82,45,0.1); border-color:rgba(160,82,45,0.1); }
 .nav-inner { max-width:1100px; margin:0 auto; padding:20px 32px; display:flex; align-items:center; justify-content:space-between; }
 .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.45rem; font-weight:500; color:white; letter-spacing:0.02em; transition:color 0.3s; background:none; border:none; cursor:pointer; }
 #navbar.scrolled .nav-logo, #navbar.solid .nav-logo { color:var(--charcoal); }
@@ -37,7 +37,7 @@ button { font-family: 'Jost', sans-serif; cursor: pointer; }
 .hamburger.open span:nth-child(2) { opacity:0; }
 .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
 #mobile-nav { display:none; flex-direction:column; background:rgba(248,246,242,0.98); border-top:1px solid rgba(160,82,45,0.12); max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s; }
-#mobile-nav.open { max-height:360px; padding:16px 32px 28px; }
+#mobile-nav.open { max-height:380px; padding:16px 32px 28px; }
 #mobile-nav a, #mobile-nav button { font-size:0.78rem; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; color:var(--charcoal); padding:13px 0; border-bottom:1px solid rgba(160,82,45,0.1); font-weight:300; background:none; border-left:none; border-right:none; border-top:none; text-align:left; display:block; width:100%; }
 #mobile-nav a:last-child, #mobile-nav button:last-child { border-bottom:none; }
 
@@ -140,16 +140,25 @@ section { padding:100px 24px; }
 .filter-btn:hover { color:var(--charcoal); }
 .filter-btn.active { color:var(--wood); border-bottom-color:var(--wood); }
 
+/* Add bar — only visible to admin */
 .add-bar { max-width:1100px; margin:0 auto; padding:32px 32px 0; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
 .add-btn-main { display:inline-flex; align-items:center; gap:10px; padding:14px 28px; background:var(--wood); color:white; border:none; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; font-weight:400; transition:background 0.25s; }
 .add-btn-main:hover { background:var(--wood-lt); }
 .add-btn-main svg { stroke:currentColor; fill:none; stroke-width:1.8; }
 .proj-count { font-size:0.75rem; font-weight:300; color:var(--stone); letter-spacing:0.06em; }
 
-/* Loading spinner */
+/* Admin badge + logout */
+.admin-bar { max-width:1100px; margin:0 auto; padding:20px 32px 0; display:none; align-items:center; justify-content:space-between; }
+.admin-bar.show { display:flex; }
+.admin-badge { display:inline-flex; align-items:center; gap:8px; background:rgba(160,82,45,0.1); border:1px solid rgba(160,82,45,0.25); padding:8px 16px; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--wood); }
+.admin-badge svg { stroke:var(--wood); fill:none; stroke-width:1.8; }
+.logout-btn { font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone); background:none; border:none; transition:color 0.2s; }
+.logout-btn:hover { color:var(--charcoal); }
+
+/* Loading */
 .spinner-wrap { display:flex; align-items:center; justify-content:center; padding:80px 24px; }
 .spinner { width:36px; height:36px; border:2px solid rgba(160,82,45,0.2); border-top-color:var(--wood); border-radius:50%; animation:spin 0.7s linear infinite; }
-@keyframes spin { to { transform:rotate(360deg); } }
+@keyframes spin { to{transform:rotate(360deg);} }
 
 .proj-grid-wrap { max-width:1100px; margin:0 auto; padding:32px 32px 100px; }
 .proj-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
@@ -162,8 +171,10 @@ section { padding:100px 24px; }
 .proj-card-cat { font-size:0.6rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--wood); margin-bottom:6px; display:block; }
 .proj-card-name { font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:400; color:var(--charcoal); margin-bottom:6px; line-height:1.2; }
 .proj-card-desc { font-size:0.8rem; font-weight:300; color:var(--stone); line-height:1.6; }
-.proj-delete { position:absolute; top:10px; right:10px; width:32px; height:32px; background:rgba(44,44,44,0.72); border:none; color:white; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity 0.25s, background 0.25s; }
-.proj-card:hover .proj-delete { opacity:1; }
+/* Delete button — only shows when admin */
+.proj-delete { position:absolute; top:10px; right:10px; width:32px; height:32px; background:rgba(44,44,44,0.72); border:none; color:white; display:none; align-items:center; justify-content:center; transition:background 0.25s; }
+.is-admin .proj-delete { display:flex; opacity:0; }
+.is-admin .proj-card:hover .proj-delete { opacity:1; }
 .proj-delete:hover { background:#c0392b; }
 .proj-delete svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:2; }
 
@@ -173,13 +184,33 @@ section { padding:100px 24px; }
 .empty-state h3 { font-family:'Cormorant Garamond',serif; font-size:1.8rem; font-weight:300; color:var(--charcoal); margin-bottom:10px; }
 .empty-state p { font-size:0.88rem; font-weight:300; color:var(--stone); margin-bottom:24px; }
 
-/* STATUS TOAST */
+/* ══════════════════════════════════
+   LOGIN MODAL
+══════════════════════════════════ */
+.login-modal-bg { position:fixed; inset:0; background:rgba(44,44,44,0.85); z-index:700; display:none; align-items:center; justify-content:center; padding:24px; backdrop-filter:blur(6px); }
+.login-modal-bg.show { display:flex; }
+.login-box { background:white; max-width:380px; width:100%; padding:48px 40px; position:relative; animation:fadeUp 0.28s ease both; }
+.login-logo { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:300; color:var(--charcoal); margin-bottom:8px; }
+.login-title { font-family:'Cormorant Garamond',serif; font-size:1.9rem; font-weight:300; color:var(--charcoal); margin-bottom:6px; }
+.login-sub { font-size:0.78rem; font-weight:300; color:var(--stone); margin-bottom:32px; }
+.login-field { margin-bottom:28px; }
+.login-label { font-size:0.63rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone); display:block; margin-bottom:8px; }
+.login-input { width:100%; border:none; border-bottom:1px solid rgba(44,44,44,0.2); padding:10px 0; font-family:'Jost',sans-serif; font-size:1rem; font-weight:300; color:var(--charcoal); outline:none; background:transparent; transition:border-color 0.25s; letter-spacing:0.08em; }
+.login-input:focus { border-bottom-color:var(--wood); }
+.login-error { font-size:0.75rem; color:#c0392b; font-weight:300; margin-top:8px; display:none; }
+.login-error.show { display:block; }
+.login-btn { width:100%; background:var(--wood); color:white; border:1.5px solid var(--wood); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; padding:15px; font-weight:400; transition:background 0.28s, color 0.28s; margin-top:4px; }
+.login-btn:hover { background:transparent; color:var(--wood); }
+.login-close { position:absolute; top:16px; right:16px; background:none; border:none; color:var(--stone); }
+.login-close svg { width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.8; }
+
+/* TOAST */
 .toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--charcoal); color:white; padding:14px 28px; font-size:0.82rem; font-weight:300; letter-spacing:0.04em; z-index:900; transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1); white-space:nowrap; }
 .toast.show { transform:translateX(-50%) translateY(0); }
 .toast.error { background:#c0392b; }
 .toast.success { background:#27ae60; }
 
-/* MODAL */
+/* ADD PROJECT MODAL */
 .modal-bg { position:fixed; inset:0; background:rgba(44,44,44,0.82); z-index:500; display:none; align-items:center; justify-content:center; padding:24px; backdrop-filter:blur(4px); }
 .modal-bg.show { display:flex; }
 .modal-box { background:white; max-width:540px; width:100%; position:relative; animation:fadeUp 0.28s ease both; max-height:92vh; overflow-y:auto; }
@@ -193,16 +224,13 @@ section { padding:100px 24px; }
 .tab-bar { display:flex; border-bottom:1px solid rgba(44,44,44,0.1); margin:24px 0 28px; }
 .tab-btn { flex:1; padding:12px 0; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; background:none; border:none; color:var(--stone); border-bottom:2px solid transparent; margin-bottom:-1px; transition:color 0.2s, border-color 0.2s; font-family:'Jost',sans-serif; }
 .tab-btn.active { color:var(--wood); border-bottom-color:var(--wood); }
-.tab-panel { display:none; }
-.tab-panel.active { display:block; }
-
+.tab-panel { display:none; } .tab-panel.active { display:block; }
 .url-instructions { background:var(--linen); padding:16px 18px; margin-bottom:20px; border-left:3px solid var(--wood); }
 .url-instructions p { font-size:0.78rem; font-weight:300; color:var(--stone); line-height:1.7; margin-bottom:4px; }
 .url-instructions p:last-child { margin-bottom:0; }
 .url-instructions strong { color:var(--charcoal); font-weight:500; }
 .url-instructions a { color:var(--wood); text-decoration:none; }
 .url-instructions a:hover { text-decoration:underline; }
-
 .url-preview-wrap { width:100%; height:160px; background:var(--linen); margin-bottom:20px; display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
 .url-preview-wrap img { width:100%; height:100%; object-fit:cover; display:none; }
 .url-preview-wrap img.show { display:block; }
@@ -210,7 +238,6 @@ section { padding:100px 24px; }
 .url-preview-placeholder svg { margin:0 auto 10px; stroke:rgba(44,44,44,0.2); fill:none; stroke-width:1; }
 .url-error { font-size:0.75rem; color:#c0392b; font-weight:300; margin-top:6px; display:none; }
 .url-error.show { display:block; }
-
 .file-drop { border:1.5px dashed rgba(160,82,45,0.35); background:rgba(160,82,45,0.03); padding:32px; text-align:center; cursor:pointer; transition:border-color 0.25s, background 0.25s; margin-bottom:20px; position:relative; }
 .file-drop:hover, .file-drop.drag { border-color:var(--wood); background:rgba(160,82,45,0.07); }
 .file-drop svg { stroke:var(--wood); fill:none; stroke-width:1.3; margin:0 auto 12px; }
@@ -221,14 +248,9 @@ section { padding:100px 24px; }
 .file-preview-wrap.show { display:block; }
 .file-preview-wrap img { width:100%; height:100%; object-fit:cover; }
 .file-note { font-size:0.72rem; font-weight:300; color:var(--stone); margin-bottom:16px; }
-
-.bulk-instructions { background:var(--linen); padding:16px 18px; margin-bottom:20px; border-left:3px solid var(--wood); }
-.bulk-instructions p { font-size:0.78rem; font-weight:300; color:var(--stone); line-height:1.7; }
-.bulk-instructions strong { color:var(--charcoal); font-weight:500; }
 .bulk-textarea { width:100%; height:130px; border:1px solid rgba(44,44,44,0.15); padding:12px; font-family:'Jost',sans-serif; font-size:0.82rem; font-weight:300; color:var(--charcoal); resize:vertical; outline:none; transition:border-color 0.25s; }
 .bulk-textarea:focus { border-color:var(--wood); }
 .bulk-textarea::placeholder { color:rgba(44,44,44,0.3); }
-
 .mfield { margin-bottom:22px; }
 .mlabel { font-size:0.63rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--stone); display:block; margin-bottom:8px; }
 .minput, .mselect, .mtextarea { width:100%; border:none; border-bottom:1px solid rgba(44,44,44,0.18); padding:10px 0; font-family:'Jost',sans-serif; font-size:0.9rem; font-weight:300; color:var(--charcoal); outline:none; background:transparent; transition:border-color 0.25s; }
@@ -240,7 +262,7 @@ section { padding:100px 24px; }
 .btn-cancel:hover { background:var(--linen); color:var(--charcoal); }
 .saving-indicator { display:none; align-items:center; gap:10px; font-size:0.78rem; font-weight:300; color:var(--stone); margin-top:16px; justify-content:center; }
 .saving-indicator.show { display:flex; }
-.saving-indicator .mini-spin { width:16px; height:16px; border:1.5px solid rgba(160,82,45,0.2); border-top-color:var(--wood); border-radius:50%; animation:spin 0.7s linear infinite; }
+.mini-spin { width:16px; height:16px; border:1.5px solid rgba(160,82,45,0.2); border-top-color:var(--wood); border-radius:50%; animation:spin 0.7s linear infinite; }
 
 /* LIGHTBOX */
 .lb { position:fixed; inset:0; background:rgba(10,10,10,0.95); z-index:600; display:none; align-items:center; justify-content:center; padding:24px; }
@@ -272,6 +294,7 @@ section { padding:100px 24px; }
   .proj-grid{grid-template-columns:1fr;} .filter-inner{padding:0 20px;}
   .add-bar{padding:24px 20px 0;} .proj-grid-wrap{padding:24px 20px 60px;}
   .modal-header{padding:28px 24px 0;} .modal-body{padding:20px 24px 28px;}
+  .login-box{padding:36px 24px;}
 }
 @media only screen and (max-width: 768px) {
   #hero {
@@ -289,7 +312,7 @@ section { padding:100px 24px; }
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-inner">
-    <button class="nav-logo" onclick="goHome()">რობაქიძეების ავეჯის სახლი</button>
+    <button class="nav-logo" onclick="goHome()">რობაქიძეების ავეჯი</button>
     <ul class="nav-links">
       <li><a href="#work" onclick="goHome()">ნამუშევრები</a></li>
       <li><a href="#process" onclick="goHome()">პროცესი</a></li>
@@ -300,7 +323,7 @@ section { padding:100px 24px; }
     <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
   <div id="mobile-nav">
-    <a href="#work" onclick="goHome();closeMenu()">ნამუშევრები </a>
+    <a href="#work" onclick="goHome();closeMenu()">ნამუშევრები</a>
     <a href="#process" onclick="goHome();closeMenu()">პროცესი</a>
     <a href="#about" onclick="goHome();closeMenu()">ჩვენს შესახებ</a>
     <a href="#contact" onclick="goHome();closeMenu()">დაგვიკავშირდით</a>
@@ -311,9 +334,9 @@ section { padding:100px 24px; }
 <!-- HOME PAGE -->
 <div id="page-home" class="page active">
   <section id="hero">
-    <p class="hero-tag">ხელნაკეთი &middot;გამძლე &middot; სამუდამო</p>
+    <p class="hero-tag">ხელნახეთი &middot; გამძლე &middot; საიმედო</p>
     <h1 class="hero-h1">ავეჯი აწყობილია<br><em>რომ გაძლოს სამუდამოდ</em></h1>
-    <p class="hero-sub">სამზარეულოები, და საყოფაცხოვრებო ავეჯი — თითოეული ნამუშევარი შექმნილია ეკოლოგიურად მოპოვებული ხის მასალისგან, ქართველი ოსტატების ხელით.</p>
+    <p class="hero-sub">სამზარეულოები, და სხვა საყოფაცხოვრებო ავეჯი — თითოეული ნამუშევარი შექმნილია ეკოლოგიურად მოპოვებული ხის მასალისგან, ქართველი ოსტატების ხელით.</p>
     <div class="hero-btns">
       <button class="btn btn-ghost" onclick="goProjects()">ნახეთ ყველა ნამუშევარი</button>
       <a href="#contact" class="btn btn-primary">შეგვიკვეთეთ</a>
@@ -344,13 +367,13 @@ section { padding:100px 24px; }
     <div class="section-inner">
       <div class="text-center">
         <span class="section-tag">როგორ ვმუშაობთ</span>
-        <h2 class="section-h2">პროცესი</h2>
+        <h2 class="section-h2">როგორ მიდის პროცესი</h2>
         <span class="divider" style="margin:0 auto;"></span>
       </div>
       <div class="steps-grid">
         <div class="step-card"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="step-num">01</div><h3 class="step-title">კონსულტაცია</h3><p class="step-desc">ვიწყებთ თქვენი სივრცის, ცხოვრების სტილისა და ხედვის დეტალური გაცნობით — რათა ზუსტად გავიგოთ, როგორ ცხოვრობთ და რა გჭირდებათ.</p></div>
         <div class="step-card"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="step-num">02</div><h3 class="step-title">დიზაინი</h3><p class="step-desc">ჩვენი ოსტატები ამზადებენ დეტალურ ნახაზებსა და მასალების შერჩევას, აერთიანებენ ეკოლოგიურად მოპოვებულ ხის მასალებს თქვენს ესთეტიკასთან.</p></div>
-        <div class="step-card"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="step-num">03</div><h3 class="step-title">მონტაჟი</h3><p class="step-desc">თითოეული ნამუშევარი ხელით მზადდება ჩვენს სახელოსნოში და მონტაჟდება უმაღლესი სიზუსტითა და პროფესიონალიზმით — რათა თქვენი სივრცე ზუსტად ისეთი იყოს, როგორიც წარმოგედგინათ.</p></div>
+        <div class="step-card"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><div class="step-num">03</div><h3 class="step-title">მონტაჯი</h3><p class="step-desc">თითოეული ნამუშევარი ხელით მზადდება ჩვენს სახელოსნოში და მონტაჟდება უმაღლესი სიზუსტითა და პროფესიონალიზმით — რათა თქვენი სივრცე ზუსტად ისეთი იყოს, როგორიც წარმოგედგინათ.</p></div>
       </div>
     </div>
   </section>
@@ -360,9 +383,9 @@ section { padding:100px 24px; }
       <div class="about-grid">
         <div class="about-text">
           <span class="section-tag">ჩვენს შესახებ</span>
-          <h2 class="section-h2">ოსტატობაზე დაფუძნებული,<br><em style="font-style:italic;">ცხოვრებისთვის შექმნილი</em></h2>
+          <h2 class="section-h2">სტატობაზე დაფუძნებული,<br><em style="font-style:italic;">ცხოვრებისთვის შექმნილი</em></h2>
           <span class="divider" style="margin-bottom:28px;"></span>
-          <p>დაარსებული თბილისში, შეიქმნა რწმენით, რომ შესანიშნავი ავეჯი ზრუნვის გამოხატულებაა — როგორც იმ ოჯახისთვის, ვინც მას იღებს, ასევე ბუნებისთვის, საიდანაც მასალა მოდის.</p>
+          <p>დაარსებული თბილისში, Modern Woodcraft შეიქმნა რწმენით, რომ შესანიშნავი ავეჯი ზრუნვის გამოხატულებაა — როგორც იმ ოჯახისთვის, ვინც მას იღებს, ასევე ბუნებისთვის, საიდანაც მასალა მოდის. თითოეული შეერთება ხელით მუშავდება, ხოლო ყოველი ზედაპირი ხელით სრულდება უმაღლესი ხარისხით.</p>
         </div>
         <div class="about-img-wrap">
           <img src="https://images.unsplash.com/photo-1449247613801-ab06418e2861?w=900&q=80&auto=format&fit=crop" alt="Workshop" loading="lazy"/>
@@ -378,10 +401,10 @@ section { padding:100px 24px; }
       <div class="contact-grid">
         <div>
           <span class="section-tag" style="color:var(--wood-lt)">დაგვიკავშირდით</span>
-          <h2 class="section-h2 contact-h2">ერთად შევქმნათ<br><em>რაღაც განსაკუთრებული</em></h2>
+          <h2 class="section-h2 contact-h2">ერთად შევქმნათ <br><em>რაღაც განსაკუთრებული</em></h2>
           <span class="divider"></span>
           <p class="contact-body">გაქვთ უკვე სრული ხედვა თუ მხოლოდ იდეა — სიამოვნებით მოვისმენთ თქვენი პროექტის შესახებ.</p>
-          <p class="contact-detail-label">მეილი</p><p class="contact-detail-val">robakidze@aveji.ge</p>
+          <p class="contact-detail-label">მეილი</p><p class="contact-detail-val">რობა@ცეხი.გე</p>
           <p class="contact-detail-label">ტელეფონი</p><p class="contact-detail-val">+995 32 000 0000</p>
           <p class="contact-detail-label">სახელოსნო</p><p class="contact-detail-val">აეროპორტის დასახლება, თბილისი</p>
           <div class="socials">
@@ -391,7 +414,6 @@ section { padding:100px 24px; }
           </div>
         </div>
         <div>
-          
           
         </div>
       </div>
@@ -406,11 +428,11 @@ section { padding:100px 24px; }
 <!-- PROJECTS PAGE -->
 <div id="page-projects" class="page">
   <div class="proj-hero">
-    <button class="back-btn" onclick="goHome()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>მთავარ გვერდზე დაბრუნება</button>
+    <button class="back-btn" onclick="goHome()"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Back to Home</button>
     <span class="section-tag">პორტფოლიო</span>
     <h1>ყველა <em>ნამუშევარი</em></h1>
-    <p>ყველა ჩვენი შექმნილი ნამუშევარი — ყველასთვის ხელმისაწვდომი, რეალურ დროში განახლებადი.</p>
   </div>
+
   <div class="filter-bar">
     <div class="filter-inner">
       <button class="filter-btn active" onclick="setFilter('all',this)">ყველა</button>
@@ -423,24 +445,62 @@ section { padding:100px 24px; }
       <button class="filter-btn" onclick="setFilter('custom',this)">ზოგადი</button>
     </div>
   </div>
-  <div class="add-bar">
+
+  <!-- Admin badge — only visible when logged in -->
+  <div class="admin-bar" id="admin-bar">
+    <div class="admin-badge">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Admin Mode
+    </div>
+    <button class="logout-btn" onclick="logout()">Sign Out</button>
+  </div>
+
+  <!-- Add project — only visible when logged in -->
+  <div class="add-bar" id="add-bar" style="display:none;">
     <button class="add-btn-main" onclick="openModal()">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      დაამატე ნამუშევარი
+      Add Project
     </button>
     <span class="proj-count" id="proj-count"></span>
   </div>
+  <!-- Count only — visible to everyone when NOT admin -->
+  <div style="max-width:1100px;margin:0 auto;padding:32px 32px 0;display:flex;justify-content:flex-end;" id="public-count-bar">
+    <span class="proj-count" id="proj-count-public"></span>
+  </div>
+
   <div class="proj-grid-wrap">
     <div id="loading-wrap" class="spinner-wrap"><div class="spinner"></div></div>
     <div class="proj-grid" id="proj-grid" style="display:none;"></div>
     <div class="empty-state" id="empty-state">
       <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      <h3>ცარიელი</h3>
+      <h3>No projects yet</h3>
+      <p>Projects will appear here once added.</p>
     </div>
+  </div>
+
+  <!-- Hidden admin login trigger — triple-click the footer logo or type secret -->
+  <div style="text-align:center;padding:0 0 48px;">
+    <button onclick="openLogin()" style="background:none;border:none;color:rgba(44,44,44,0.15);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;" onmouseover="this.style.color='rgba(44,44,44,0.4)'" onmouseout="this.style.color='rgba(44,44,44,0.15)'">Admin</button>
   </div>
 </div>
 
-<!-- MODAL -->
+<!-- LOGIN MODAL -->
+<div class="login-modal-bg" id="login-modal">
+  <div class="login-box">
+    <button class="login-close" onclick="closeLogin()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <p class="login-logo">რობაქიძეების ავეჯი</p>
+    <h2 class="login-title">ადმინი</h2>
+    <p class="login-sub">ჩაწერეთ პაროლი</p>
+    <div class="login-field">
+      <label class="login-label">პაროლი</label>
+      <input class="login-input" id="login-pw" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/>
+      <div class="login-error" id="login-error">Incorrect password. Try again.</div>
+    </div>
+    <button class="login-btn" onclick="doLogin()">შესვლა</button>
+  </div>
+</div>
+
+<!-- ADD PROJECT MODAL -->
 <div class="modal-bg" id="modal-bg">
   <div class="modal-box">
     <button class="modal-x" onclick="closeModal()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
@@ -454,13 +514,12 @@ section { padding:100px 24px; }
       </div>
     </div>
     <div class="modal-body">
-
       <!-- URL TAB -->
       <div class="tab-panel active" id="tab-url">
         <div class="url-instructions">
           <p><strong>Get a direct image link from:</strong></p>
           <p>• <strong>Imgur</strong> (easiest): upload at <a href="https://imgur.com" target="_blank">imgur.com</a> → right-click image → Copy image address</p>
-          <p>• <strong>Google Drive</strong>: Share → copy link, then paste & click "Convert"</p>
+          <p>• <strong>Google Drive</strong>: Share → copy link, paste & click "Convert"</p>
           <p>• <strong>Dropbox</strong>: copy link, change <code>dl=0</code> → <code>dl=1</code></p>
           <p>• Any direct URL ending in <strong>.jpg / .png / .webp</strong></p>
         </div>
@@ -477,12 +536,8 @@ section { padding:100px 24px; }
           <img id="url-preview-img" src="" alt="" onload="urlLoaded()" onerror="urlFailed()"/>
         </div>
       </div>
-
       <!-- FILE TAB -->
       <div class="tab-panel" id="tab-file">
-        <div class="url-instructions" style="margin-bottom:16px;">
-          <p><strong>Note:</strong> Uploaded photos are stored as image links in the database. The photo data is encoded and saved — <strong>no file size limit</strong> applies here, but very large photos may be slow to upload.</p>
-        </div>
         <div class="file-drop" id="file-drop" ondragover="onDrag(event,true)" ondragleave="onDrag(event,false)" ondrop="onDrop(event)">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
           <p><strong>Click to upload</strong> or drag & drop your photo</p>
@@ -492,11 +547,10 @@ section { padding:100px 24px; }
         <div class="file-preview-wrap" id="file-preview-wrap"><img id="file-preview-img" src="" alt=""/></div>
         <p class="file-note" id="file-note"></p>
       </div>
-
       <!-- BULK TAB -->
       <div class="tab-panel" id="tab-bulk">
-        <div class="bulk-instructions">
-          <p><strong>Paste one image URL per line.</strong> Each becomes a separate project. You can rename them individually after adding. All will be saved to the database and visible to everyone.</p>
+        <div class="url-instructions">
+          <p><strong>Paste one image URL per line.</strong> Each becomes a separate project in the selected category. You can rename them after.</p>
         </div>
         <div class="mfield" style="margin-top:16px;">
           <label class="mlabel">Image URLs — one per line</label>
@@ -505,7 +559,7 @@ section { padding:100px 24px; }
         <div class="mfield">
           <label class="mlabel">ყველა კატეგორია</label>
           <select class="mselect" id="bulk-cat">
-            <option value="kitchens">სამზარეული</option>
+            <option value="kitchens">სამზარეულო</option>
             <option value="living">მისაღები ოთახი</option>
             <option value="dining">სასადილო ოთახი</option>
             <option value="bedrooms">საძინებელი ოთახი</option>
@@ -520,11 +574,10 @@ section { padding:100px 24px; }
         </div>
         <div class="saving-indicator" id="bulk-saving"><div class="mini-spin"></div><span>Saving to database…</span></div>
       </div>
-
       <!-- Shared fields -->
       <div id="shared-fields">
         <div class="mfield">
-          <label class="mlabel">Project Name</label>
+          <label class="mlabel">პროექტის სახელი</label>
           <input class="minput" id="m-name" type="text" placeholder="e.g. Oak Kitchen — Vake District"/>
         </div>
         <div class="mfield">
@@ -540,7 +593,7 @@ section { padding:100px 24px; }
           </select>
         </div>
         <div class="mfield">
-          <label class="mlabel">მოკლე აღწერა (optional)</label>
+          <label class="mlabel">მოკლე აღწერა</label>
           <textarea class="mtextarea" id="m-desc" rows="2" placeholder="e.g. Solid oak, integrated appliances, 2024"></textarea>
         </div>
         <div class="modal-actions">
@@ -549,7 +602,6 @@ section { padding:100px 24px; }
         </div>
         <div class="saving-indicator" id="saving-indicator"><div class="mini-spin"></div><span>Saving to database…</span></div>
       </div>
-
     </div>
   </div>
 </div>
@@ -567,67 +619,93 @@ section { padding:100px 24px; }
 </div>
 
 <script>
-/* ═══════════════════════════════════
-   SUPABASE CONFIG
-═══════════════════════════════════ */
+/* ════════════════════════════════
+   ⚙️  CHANGE YOUR PASSWORD HERE
+════════════════════════════════ */
+const ADMIN_PASSWORD = 'roba1';
+/* ════════════════════════════════ */
+
 const SB_URL = 'https://psstoqerwtllidsrosyv.supabase.co';
 const SB_KEY = 'sb_publishable_OdO3CsWzOukNwA0FRAbfsg_2_4Pw5Ia';
-const HEADERS = { 'Content-Type': 'application/json', 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
-
+const HEADERS = { 'Content-Type':'application/json', 'apikey':SB_KEY, 'Authorization':'Bearer '+SB_KEY };
 const CAT_LABELS = { kitchens:'Kitchens', living:'Living Rooms', dining:'Dining', bedrooms:'Bedrooms', storage:'Storage', outdoor:'Outdoor', custom:'Custom' };
 
 let projects = [];
+let isAdmin = false;
 let activeFilter = 'all';
 let activeTab = 'url';
 let pendingFileImg = null;
 let lbIndex = 0, lbList = [];
 
-/* ═══════════════════════════════════
-   SUPABASE API
-═══════════════════════════════════ */
+/* ── SUPABASE ── */
 async function dbFetch() {
   const res = await fetch(`${SB_URL}/rest/v1/projects?select=*&order=created_at.desc`, { headers: HEADERS });
-  if (!res.ok) throw new Error('Failed to load projects');
+  if (!res.ok) throw new Error('Failed to load');
   return res.json();
 }
 async function dbInsert(row) {
-  const res = await fetch(`${SB_URL}/rest/v1/projects`, {
-    method: 'POST',
-    headers: { ...HEADERS, 'Prefer': 'return=representation' },
-    body: JSON.stringify(row)
-  });
-  if (!res.ok) { const e = await res.text(); throw new Error(e); }
+  const res = await fetch(`${SB_URL}/rest/v1/projects`, { method:'POST', headers:{...HEADERS,'Prefer':'return=representation'}, body:JSON.stringify(row) });
+  if (!res.ok) { const e=await res.text(); throw new Error(e); }
   return res.json();
 }
 async function dbInsertMany(rows) {
-  const res = await fetch(`${SB_URL}/rest/v1/projects`, {
-    method: 'POST',
-    headers: { ...HEADERS, 'Prefer': 'return=representation' },
-    body: JSON.stringify(rows)
-  });
-  if (!res.ok) { const e = await res.text(); throw new Error(e); }
+  const res = await fetch(`${SB_URL}/rest/v1/projects`, { method:'POST', headers:{...HEADERS,'Prefer':'return=representation'}, body:JSON.stringify(rows) });
+  if (!res.ok) { const e=await res.text(); throw new Error(e); }
   return res.json();
 }
 async function dbDelete(id) {
-  const res = await fetch(`${SB_URL}/rest/v1/projects?id=eq.${id}`, { method: 'DELETE', headers: HEADERS });
+  const res = await fetch(`${SB_URL}/rest/v1/projects?id=eq.${id}`, { method:'DELETE', headers:HEADERS });
   if (!res.ok) throw new Error('Delete failed');
 }
 
-/* ═══════════════════════════════════
-   PAGE SWITCHING
-═══════════════════════════════════ */
+/* ── ADMIN AUTH ── */
+function openLogin() { document.getElementById('login-modal').classList.add('show'); document.getElementById('login-pw').value=''; document.getElementById('login-error').classList.remove('show'); setTimeout(()=>document.getElementById('login-pw').focus(),100); }
+function closeLogin() { document.getElementById('login-modal').classList.remove('show'); }
+function doLogin() {
+  const pw = document.getElementById('login-pw').value;
+  if (pw === ADMIN_PASSWORD) {
+    isAdmin = true;
+    sessionStorage.setItem('mwc_admin','1');
+    closeLogin();
+    applyAdminUI();
+    showToast('Welcome back! Admin mode on.', 'success');
+  } else {
+    document.getElementById('login-error').classList.add('show');
+    document.getElementById('login-pw').value='';
+    document.getElementById('login-pw').focus();
+  }
+}
+function logout() {
+  isAdmin = false;
+  sessionStorage.removeItem('mwc_admin');
+  applyAdminUI();
+  showToast('Signed out of admin mode.');
+}
+function applyAdminUI() {
+  document.getElementById('admin-bar').classList.toggle('show', isAdmin);
+  document.getElementById('add-bar').style.display = isAdmin ? 'flex' : 'none';
+  document.getElementById('public-count-bar').style.display = isAdmin ? 'none' : 'flex';
+  document.getElementById('proj-grid').classList.toggle('is-admin', isAdmin);
+  // Sync count
+  updateCount();
+}
+
+/* ── PAGE SWITCHING ── */
 function goHome() {
   document.getElementById('page-home').classList.add('active');
   document.getElementById('page-projects').classList.remove('active');
   document.getElementById('navbar').classList.remove('solid');
-  window.scrollTo({ top:0, behavior:'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 function goProjects() {
   document.getElementById('page-home').classList.remove('active');
   document.getElementById('page-projects').classList.add('active');
   document.getElementById('navbar').classList.add('solid');
+  // Restore admin session
+  if (sessionStorage.getItem('mwc_admin') === '1') { isAdmin = true; }
+  applyAdminUI();
   loadProjects();
-  window.scrollTo({ top:0, behavior:'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 const navbar = document.getElementById('navbar');
@@ -640,40 +718,45 @@ function toggleMenu() { menuOpen=!menuOpen; document.getElementById('hamburger')
 function closeMenu() { menuOpen=false; document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobile-nav').classList.remove('open'); }
 function handleSubmit(e) { e.preventDefault(); document.getElementById('contact-form').style.display='none'; document.getElementById('success-msg').classList.add('show'); }
 
-/* ═══════════════════════════════════
-   LOAD & RENDER
-═══════════════════════════════════ */
+/* ── LOAD & RENDER ── */
 async function loadProjects() {
-  document.getElementById('loading-wrap').style.display = 'flex';
-  document.getElementById('proj-grid').style.display = 'none';
+  document.getElementById('loading-wrap').style.display='flex';
+  document.getElementById('proj-grid').style.display='none';
   document.getElementById('empty-state').classList.remove('show');
   try {
     projects = await dbFetch();
     renderGrid();
   } catch(e) {
-    showToast('Could not load projects. Check your connection.', 'error');
-    document.getElementById('loading-wrap').style.display = 'none';
+    showToast('Could not load projects. Check your connection.','error');
+    document.getElementById('loading-wrap').style.display='none';
   }
 }
 
 function setFilter(cat, btn) {
   activeFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderGrid();
 }
 
+function updateCount() {
+  const list = activeFilter==='all' ? projects : projects.filter(p=>p.cat===activeFilter);
+  const txt = projects.length+' project'+(projects.length!==1?'s':'')+(activeFilter!=='all'?' · '+list.length+' shown':'');
+  document.getElementById('proj-count').textContent = txt;
+  document.getElementById('proj-count-public').textContent = txt;
+}
+
 function renderGrid() {
-  document.getElementById('loading-wrap').style.display = 'none';
+  document.getElementById('loading-wrap').style.display='none';
   const grid = document.getElementById('proj-grid');
   const empty = document.getElementById('empty-state');
-  const list = activeFilter === 'all' ? projects : projects.filter(p => p.cat === activeFilter);
+  const list = activeFilter==='all' ? projects : projects.filter(p=>p.cat===activeFilter);
   lbList = list;
-  document.getElementById('proj-count').textContent = projects.length + ' project' + (projects.length !== 1 ? 's' : '') + (activeFilter !== 'all' ? ' · ' + list.length + ' shown' : '');
+  updateCount();
   if (!list.length) { grid.style.display='none'; empty.classList.add('show'); return; }
   empty.classList.remove('show');
-  grid.style.display = 'grid';
-  grid.innerHTML = list.map((p, i) => `
+  grid.style.display='grid';
+  grid.innerHTML = list.map((p,i)=>`
     <div class="proj-card">
       <div class="proj-card-img-wrap" onclick="openLb(${i})">
         <img src="${p.img}" alt="${p.name}" loading="lazy"/>
@@ -688,193 +771,181 @@ function renderGrid() {
       </button>
     </div>
   `).join('');
+  // Re-apply admin class on grid
+  grid.classList.toggle('is-admin', isAdmin);
 }
 
 async function deleteProject(id) {
+  if (!isAdmin) return;
   if (!confirm('Remove this project for everyone?')) return;
   try {
     await dbDelete(id);
-    projects = projects.filter(p => p.id !== id);
+    projects = projects.filter(p=>p.id!==id);
     renderGrid();
-    showToast('Project removed', 'success');
-  } catch(e) {
-    showToast('Could not delete. Try again.', 'error');
-  }
+    showToast('Project removed','success');
+  } catch(e) { showToast('Could not delete. Try again.','error'); }
 }
 
-/* ═══════════════════════════════════
-   MODAL
-═══════════════════════════════════ */
+/* ── MODAL ── */
 function openModal() {
-  document.getElementById('m-name').value = '';
-  document.getElementById('m-desc').value = '';
-  document.getElementById('m-cat').value = 'kitchens';
-  document.getElementById('url-input').value = '';
-  document.getElementById('url-preview-img').src = '';
+  if (!isAdmin) return;
+  document.getElementById('m-name').value='';
+  document.getElementById('m-desc').value='';
+  document.getElementById('m-cat').value='kitchens';
+  document.getElementById('url-input').value='';
+  document.getElementById('url-preview-img').src='';
   document.getElementById('url-preview-img').classList.remove('show');
-  document.getElementById('url-placeholder').style.display = 'block';
+  document.getElementById('url-placeholder').style.display='block';
   document.getElementById('url-error').classList.remove('show');
   document.getElementById('file-preview-wrap').classList.remove('show');
-  document.getElementById('file-note').textContent = '';
-  document.getElementById('bulk-urls').value = '';
+  document.getElementById('file-note').textContent='';
+  document.getElementById('bulk-urls').value='';
   document.getElementById('saving-indicator').classList.remove('show');
   document.getElementById('bulk-saving').classList.remove('show');
-  pendingFileImg = null;
-  switchTab('url', document.querySelector('.tab-btn'));
+  pendingFileImg=null;
+  switchTab('url',document.querySelector('.tab-btn'));
   document.getElementById('modal-bg').classList.add('show');
 }
-function closeModal() { document.getElementById('modal-bg').classList.remove('show'); pendingFileImg = null; }
-
-function switchTab(tab, btn) {
-  activeTab = tab;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+function closeModal() { document.getElementById('modal-bg').classList.remove('show'); pendingFileImg=null; }
+function switchTab(tab,btn) {
+  activeTab=tab;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  document.getElementById('shared-fields').style.display = tab === 'bulk' ? 'none' : 'block';
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.getElementById('shared-fields').style.display = tab==='bulk'?'none':'block';
 }
 
-/* URL TAB */
+/* URL */
 let urlTimer;
-function onUrlType() { clearTimeout(urlTimer); urlTimer = setTimeout(tryUrl, 700); }
-function convertUrl() { const i = document.getElementById('url-input'); i.value = convertLink(i.value.trim()); tryUrl(); }
+function onUrlType() { clearTimeout(urlTimer); urlTimer=setTimeout(tryUrl,700); }
+function convertUrl() { const i=document.getElementById('url-input'); i.value=convertLink(i.value.trim()); tryUrl(); }
 function convertLink(url) {
-  const m = url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
-  if (m) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
-  const m2 = url.match(/drive\.google\.com\/open\?id=([^&]+)/);
-  if (m2) return `https://drive.google.com/uc?export=view&id=${m2[1]}`;
-  if (url.includes('dropbox.com')) return url.replace('dl=0','dl=1').replace('www.dropbox','dl.dropboxusercontent');
+  const m=url.match(/drive\.google\.com\/file\/d\/([^/]+)/);
+  if(m) return `https://drive.google.com/uc?export=view&id=${m[1]}`;
+  const m2=url.match(/drive\.google\.com\/open\?id=([^&]+)/);
+  if(m2) return `https://drive.google.com/uc?export=view&id=${m2[1]}`;
+  if(url.includes('dropbox.com')) return url.replace('dl=0','dl=1').replace('www.dropbox','dl.dropboxusercontent');
   return url;
 }
 function tryUrl() {
-  const url = convertLink(document.getElementById('url-input').value.trim());
-  document.getElementById('url-input').value = url;
-  if (!url) return;
+  const url=convertLink(document.getElementById('url-input').value.trim());
+  document.getElementById('url-input').value=url;
+  if(!url) return;
   document.getElementById('url-error').classList.remove('show');
   document.getElementById('url-preview-img').classList.remove('show');
-  document.getElementById('url-preview-img').src = url;
+  document.getElementById('url-preview-img').src=url;
 }
 function urlLoaded() {
   document.getElementById('url-preview-img').classList.add('show');
-  document.getElementById('url-placeholder').style.display = 'none';
+  document.getElementById('url-placeholder').style.display='none';
   document.getElementById('url-error').classList.remove('show');
-  if (!document.getElementById('m-name').value) {
-    const url = document.getElementById('url-input').value;
-    const part = url.split('/').pop().split('?')[0].replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
-    if (part.length > 2) document.getElementById('m-name').value = part.replace(/\b\w/g,c=>c.toUpperCase());
+  if(!document.getElementById('m-name').value) {
+    const url=document.getElementById('url-input').value;
+    const part=url.split('/').pop().split('?')[0].replace(/\.[^.]+$/,'').replace(/[-_]/g,' ');
+    if(part.length>2) document.getElementById('m-name').value=part.replace(/\b\w/g,c=>c.toUpperCase());
   }
 }
 function urlFailed() {
-  const url = document.getElementById('url-input').value.trim();
-  if (url) { document.getElementById('url-error').classList.add('show'); document.getElementById('url-preview-img').classList.remove('show'); }
+  const url=document.getElementById('url-input').value.trim();
+  if(url) { document.getElementById('url-error').classList.add('show'); document.getElementById('url-preview-img').classList.remove('show'); }
 }
 
-/* FILE TAB */
+/* FILE */
 function onFileChosen(e) { processFile(e.target.files[0]); }
-function onDrag(e, over) { e.preventDefault(); document.getElementById('file-drop').classList.toggle('drag', over); }
+function onDrag(e,over) { e.preventDefault(); document.getElementById('file-drop').classList.toggle('drag',over); }
 function onDrop(e) { e.preventDefault(); document.getElementById('file-drop').classList.remove('drag'); processFile(e.dataTransfer.files[0]); }
 function processFile(file) {
-  if (!file) return;
-  const img = new Image(), reader = new FileReader();
-  reader.onload = ev => {
-    img.onload = () => {
-      const MAX = 1400; let w = img.width, h = img.height;
-      if (w > MAX) { h = Math.round(h*MAX/w); w = MAX; }
-      const c = document.createElement('canvas'); c.width=w; c.height=h;
+  if(!file) return;
+  const img=new Image(), reader=new FileReader();
+  reader.onload=ev=>{
+    img.onload=()=>{
+      const MAX=1400; let w=img.width, h=img.height;
+      if(w>MAX){h=Math.round(h*MAX/w);w=MAX;}
+      const c=document.createElement('canvas'); c.width=w; c.height=h;
       c.getContext('2d').drawImage(img,0,0,w,h);
-      pendingFileImg = c.toDataURL('image/jpeg', 0.78);
-      document.getElementById('file-preview-img').src = pendingFileImg;
+      pendingFileImg=c.toDataURL('image/jpeg',0.78);
+      document.getElementById('file-preview-img').src=pendingFileImg;
       document.getElementById('file-preview-wrap').classList.add('show');
-      document.getElementById('file-note').textContent = `Compressed to ~${Math.round(pendingFileImg.length*0.75/1024)}KB`;
-      if (!document.getElementById('m-name').value) {
-        const n = file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-        document.getElementById('m-name').value = n;
+      document.getElementById('file-note').textContent=`Compressed to ~${Math.round(pendingFileImg.length*0.75/1024)}KB`;
+      if(!document.getElementById('m-name').value) {
+        const n=file.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+        document.getElementById('m-name').value=n;
       }
     };
-    img.src = ev.target.result;
+    img.src=ev.target.result;
   };
   reader.readAsDataURL(file);
 }
 
-/* SAVE SINGLE */
+/* SAVE */
 async function saveProject() {
-  let img = '';
-  if (activeTab === 'url') {
-    img = document.getElementById('url-input').value.trim();
-    if (!img) { showToast('Please enter an image URL', 'error'); return; }
-    img = convertLink(img);
+  if(!isAdmin) return;
+  let img='';
+  if(activeTab==='url') {
+    img=document.getElementById('url-input').value.trim();
+    if(!img){showToast('Please enter an image URL','error');return;}
+    img=convertLink(img);
   } else {
-    if (!pendingFileImg) { showToast('Please select a photo', 'error'); return; }
-    img = pendingFileImg;
+    if(!pendingFileImg){showToast('Please select a photo','error');return;}
+    img=pendingFileImg;
   }
-  const name = document.getElementById('m-name').value.trim() || 'Untitled Project';
-  const cat  = document.getElementById('m-cat').value;
-  const description = document.getElementById('m-desc').value.trim();
-
-  document.getElementById('save-btn').disabled = true;
+  const name=document.getElementById('m-name').value.trim()||'Untitled Project';
+  const cat=document.getElementById('m-cat').value;
+  const description=document.getElementById('m-desc').value.trim();
+  document.getElementById('save-btn').disabled=true;
   document.getElementById('saving-indicator').classList.add('show');
   try {
-    const [saved] = await dbInsert({ name, cat, description, img });
+    const [saved]=await dbInsert({name,cat,description,img});
     projects.unshift(saved);
     renderGrid();
     closeModal();
-    showToast('Project saved — visible to everyone!', 'success');
-  } catch(e) {
-    showToast('Save failed. Check your connection.', 'error');
-  } finally {
-    document.getElementById('save-btn').disabled = false;
-    document.getElementById('saving-indicator').classList.remove('show');
-  }
+    showToast('Project saved — visible to everyone!','success');
+  } catch(e){showToast('Save failed. Check your connection.','error');}
+  finally{document.getElementById('save-btn').disabled=false; document.getElementById('saving-indicator').classList.remove('show');}
 }
-
-/* SAVE BULK */
 async function saveBulk() {
-  const raw = document.getElementById('bulk-urls').value.trim();
-  const cat = document.getElementById('bulk-cat').value;
-  if (!raw) { showToast('Paste at least one URL', 'error'); return; }
-  const urls = raw.split('\n').map(u => u.trim()).filter(u => u.length > 8);
-  if (!urls.length) { showToast('No valid URLs found', 'error'); return; }
-  const rows = urls.map((url, i) => ({
-    name: `${CAT_LABELS[cat]} Project ${i+1}`,
-    cat, description: '', img: convertLink(url)
-  }));
+  if(!isAdmin) return;
+  const raw=document.getElementById('bulk-urls').value.trim();
+  const cat=document.getElementById('bulk-cat').value;
+  if(!raw){showToast('Paste at least one URL','error');return;}
+  const urls=raw.split('\n').map(u=>u.trim()).filter(u=>u.length>8);
+  if(!urls.length){showToast('No valid URLs found','error');return;}
+  const rows=urls.map((url,i)=>({name:`${CAT_LABELS[cat]} Project ${i+1}`,cat,description:'',img:convertLink(url)}));
   document.getElementById('bulk-saving').classList.add('show');
   try {
-    const saved = await dbInsertMany(rows);
+    const saved=await dbInsertMany(rows);
     projects.unshift(...saved);
     renderGrid();
     closeModal();
-    showToast(`${saved.length} projects added — visible to everyone!`, 'success');
-  } catch(e) {
-    showToast('Bulk save failed. Check your connection.', 'error');
-  } finally {
-    document.getElementById('bulk-saving').classList.remove('show');
-  }
+    showToast(`${saved.length} projects added!`,'success');
+  } catch(e){showToast('Bulk save failed.','error');}
+  finally{document.getElementById('bulk-saving').classList.remove('show');}
 }
 
 /* TOAST */
 let toastTimer;
-function showToast(msg, type='') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast' + (type ? ' '+type : '') + ' show';
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+function showToast(msg,type=''){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className='toast'+(type?' '+type:'')+' show';
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),3500);
 }
 
 /* LIGHTBOX */
-function openLb(i) { lbIndex=i; showLbItem(); document.getElementById('lb').classList.add('show'); document.body.style.overflow='hidden'; }
-function showLbItem() { const p=lbList[lbIndex]; if(!p)return; document.getElementById('lb-img').src=p.img; document.getElementById('lb-name').textContent=p.name; document.getElementById('lb-cat').textContent=CAT_LABELS[p.cat]||p.cat; }
-function lbMove(dir) { lbIndex=(lbIndex+dir+lbList.length)%lbList.length; showLbItem(); }
-function closeLb() { document.getElementById('lb').classList.remove('show'); document.body.style.overflow=''; }
-function lbBg(e) { if(e.target===document.getElementById('lb')) closeLb(); }
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('lb').classList.contains('show')) return;
-  if (e.key==='ArrowLeft') lbMove(-1);
-  if (e.key==='ArrowRight') lbMove(1);
-  if (e.key==='Escape') closeLb();
+function openLb(i){lbIndex=i;showLbItem();document.getElementById('lb').classList.add('show');document.body.style.overflow='hidden';}
+function showLbItem(){const p=lbList[lbIndex];if(!p)return;document.getElementById('lb-img').src=p.img;document.getElementById('lb-name').textContent=p.name;document.getElementById('lb-cat').textContent=CAT_LABELS[p.cat]||p.cat;}
+function lbMove(dir){lbIndex=(lbIndex+dir+lbList.length)%lbList.length;showLbItem();}
+function closeLb(){document.getElementById('lb').classList.remove('show');document.body.style.overflow='';}
+function lbBg(e){if(e.target===document.getElementById('lb'))closeLb();}
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('login-modal').classList.contains('show')&&e.key==='Escape'){closeLogin();return;}
+  if(!document.getElementById('lb').classList.contains('show'))return;
+  if(e.key==='ArrowLeft')lbMove(-1);
+  if(e.key==='ArrowRight')lbMove(1);
+  if(e.key==='Escape')closeLb();
 });
-document.getElementById('modal-bg').addEventListener('click', e => { if(e.target===document.getElementById('modal-bg')) closeModal(); });
+document.getElementById('modal-bg').addEventListener('click',e=>{if(e.target===document.getElementById('modal-bg'))closeModal();});
+document.getElementById('login-modal').addEventListener('click',e=>{if(e.target===document.getElementById('login-modal'))closeLogin();});
 </script>
 </body>
 </html>
